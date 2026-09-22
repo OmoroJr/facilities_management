@@ -1,0 +1,24 @@
+{
+ "creation": "2026-09-22 00:00:00.000000",
+ "doctype": "Workflow",
+ "document_type": "Vendor Approval Request",
+ "is_active": 1,
+ "modified": "2026-09-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "Vendor Approval Workflow",
+ "owner": "Administrator",
+ "send_email_alert": 0,
+ "states": [
+  {"state": "Draft", "doc_status": "0", "allow_edit": "Facilities Technician", "style": ""},
+  {"state": "Pending Approval", "doc_status": "0", "allow_edit": "Facilities Approver", "style": "Warning"},
+  {"state": "Approved", "doc_status": "0", "allow_edit": "Facilities Manager", "style": "Success"},
+  {"state": "Rejected", "doc_status": "0", "allow_edit": "Facilities Manager", "style": "Danger"}
+ ],
+ "transitions": [
+  {"state": "Draft", "action": "Send for Approval", "next_state": "Pending Approval", "allowed": "Facilities Technician", "allow_self_approval": 1},
+  {"state": "Pending Approval", "action": "Approve", "next_state": "Approved", "allowed": "Facilities Approver"},
+  {"state": "Pending Approval", "action": "Reject", "next_state": "Rejected", "allowed": "Facilities Approver"}
+ ],
+ "workflow_name": "Vendor Approval Workflow",
+ "workflow_state_field": "status"
+}

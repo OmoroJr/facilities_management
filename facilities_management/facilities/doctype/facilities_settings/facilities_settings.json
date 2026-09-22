@@ -1,0 +1,170 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-09-22 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_sb",
+  "work_order_naming_series",
+  "default_priority",
+  "auto_close_after_days",
+  "column_break_sla",
+  "default_approver",
+  "escalation_hours",
+  "working_hours_start",
+  "working_hours_end",
+  "notif_sb",
+  "enable_email_notifications",
+  "enable_sms_notifications",
+  "column_break_sms",
+  "sms_provider",
+  "sms_sender_id",
+  "sms_api_url",
+  "sms_api_key",
+  "sms_api_username"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_sb",
+   "fieldtype": "Section Break",
+   "label": "Work Order Numbering"
+  },
+  {
+   "fieldname": "work_order_naming_series",
+   "fieldtype": "Data",
+   "label": "Work Order Naming Series",
+   "default": "WO-.YYYY.-"
+  },
+  {
+   "fieldname": "default_priority",
+   "fieldtype": "Select",
+   "label": "Default Priority",
+   "options": "Low\nMedium\nHigh\nCritical",
+   "default": "Medium"
+  },
+  {
+   "fieldname": "auto_close_after_days",
+   "fieldtype": "Int",
+   "label": "Auto-close Completed Orders After (days)",
+   "default": "7"
+  },
+  {
+   "fieldname": "column_break_sla",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "default_approver",
+   "fieldtype": "Link",
+   "label": "Default Approver",
+   "options": "User"
+  },
+  {
+   "fieldname": "escalation_hours",
+   "fieldtype": "Int",
+   "label": "Escalate If Unassigned After (hours)",
+   "default": "24"
+  },
+  {
+   "fieldname": "working_hours_start",
+   "fieldtype": "Time",
+   "label": "Working Hours Start"
+  },
+  {
+   "fieldname": "working_hours_end",
+   "fieldtype": "Time",
+   "label": "Working Hours End"
+  },
+  {
+   "fieldname": "notif_sb",
+   "fieldtype": "Section Break",
+   "label": "Notifications"
+  },
+  {
+   "fieldname": "enable_email_notifications",
+   "fieldtype": "Check",
+   "label": "Enable Email Notifications",
+   "default": "1"
+  },
+  {
+   "fieldname": "enable_sms_notifications",
+   "fieldtype": "Check",
+   "label": "Enable SMS Notifications",
+   "default": "0"
+  },
+  {
+   "fieldname": "column_break_sms",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "sms_provider",
+   "fieldtype": "Select",
+   "label": "SMS Provider",
+   "options": "\nAfrica's Talking\nCustom Gateway",
+   "depends_on": "eval:doc.enable_sms_notifications"
+  },
+  {
+   "fieldname": "sms_sender_id",
+   "fieldtype": "Data",
+   "label": "SMS Sender ID",
+   "depends_on": "eval:doc.enable_sms_notifications"
+  },
+  {
+   "fieldname": "sms_api_url",
+   "fieldtype": "Data",
+   "label": "SMS API URL",
+   "depends_on": "eval:doc.enable_sms_notifications"
+  },
+  {
+   "fieldname": "sms_api_key",
+   "fieldtype": "Password",
+   "label": "SMS API Key",
+   "depends_on": "eval:doc.enable_sms_notifications"
+  },
+  {
+   "fieldname": "sms_api_username",
+   "fieldtype": "Data",
+   "label": "SMS API Username",
+   "depends_on": "eval:doc.enable_sms_notifications"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-09-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Facilities",
+ "name": "Facilities Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "states": [],
+ "track_changes": 1,
+ "is_submittable": 0,
+ "issingle": 1
+}

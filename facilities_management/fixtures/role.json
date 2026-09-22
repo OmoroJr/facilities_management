@@ -1,0 +1,30 @@
+[
+ {
+  "name": "Facilities Manager",
+  "doctype": "Role",
+  "role_name": "Facilities Manager",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "name": "Facilities Technician",
+  "doctype": "Role",
+  "role_name": "Facilities Technician",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "name": "Facilities Approver",
+  "doctype": "Role",
+  "role_name": "Facilities Approver",
+  "desk_access": 1,
+  "disabled": 0
+ },
+ {
+  "name": "Facilities Client",
+  "doctype": "Role",
+  "role_name": "Facilities Client",
+  "desk_access": 0,
+  "disabled": 0
+ }
+]

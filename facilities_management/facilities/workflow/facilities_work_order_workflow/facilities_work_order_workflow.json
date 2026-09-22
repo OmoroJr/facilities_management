@@ -1,0 +1,43 @@
+{
+ "creation": "2026-09-22 00:00:00.000000",
+ "doctype": "Workflow",
+ "document_type": "Facilities Work Order",
+ "is_active": 1,
+ "modified": "2026-09-22 00:00:00.000000",
+ "modified_by": "Administrator",
+ "name": "Facilities Work Order Workflow",
+ "owner": "Administrator",
+ "send_email_alert": 0,
+ "states": [
+  {"state": "Draft", "doc_status": "0", "allow_edit": "Facilities Client", "style": ""},
+  {"state": "Submitted", "doc_status": "0", "allow_edit": "Facilities Approver", "style": "Warning"},
+  {"state": "Pending Approval", "doc_status": "0", "allow_edit": "Facilities Approver", "style": "Warning"},
+  {"state": "Approved", "doc_status": "0", "allow_edit": "Facilities Manager", "style": "Success"},
+  {"state": "Rejected", "doc_status": "0", "allow_edit": "Facilities Client", "style": "Danger"},
+  {"state": "Assigned", "doc_status": "0", "allow_edit": "Facilities Technician", "style": "Primary"},
+  {"state": "In Progress", "doc_status": "0", "allow_edit": "Facilities Technician", "style": "Primary"},
+  {"state": "On Hold", "doc_status": "0", "allow_edit": "Facilities Technician", "style": "Warning"},
+  {"state": "Completed", "doc_status": "0", "allow_edit": "Facilities Manager", "style": "Success"},
+  {"state": "Closed", "doc_status": "0", "allow_edit": "Facilities Manager", "style": "Success"},
+  {"state": "Cancelled", "doc_status": "0", "allow_edit": "Facilities Manager", "style": "Danger"}
+ ],
+ "transitions": [
+  {"state": "Draft", "action": "Submit", "next_state": "Submitted", "allowed": "Facilities Client", "allow_self_approval": 1},
+  {"state": "Submitted", "action": "Send for Approval", "next_state": "Pending Approval", "allowed": "Facilities Client", "allow_self_approval": 1},
+  {"state": "Pending Approval", "action": "Approve", "next_state": "Approved", "allowed": "Facilities Approver"},
+  {"state": "Pending Approval", "action": "Reject", "next_state": "Rejected", "allowed": "Facilities Approver"},
+  {"state": "Approved", "action": "Assign", "next_state": "Assigned", "allowed": "Facilities Manager"},
+  {"state": "Assigned", "action": "Start Work", "next_state": "In Progress", "allowed": "Facilities Technician"},
+  {"state": "In Progress", "action": "Put On Hold", "next_state": "On Hold", "allowed": "Facilities Technician"},
+  {"state": "On Hold", "action": "Resume", "next_state": "In Progress", "allowed": "Facilities Technician"},
+  {"state": "In Progress", "action": "Complete", "next_state": "Completed", "allowed": "Facilities Technician"},
+  {"state": "Completed", "action": "Close", "next_state": "Closed", "allowed": "Facilities Manager"},
+  {"state": "Draft", "action": "Cancel", "next_state": "Cancelled", "allowed": "Facilities Client"},
+  {"state": "Submitted", "action": "Cancel", "next_state": "Cancelled", "allowed": "Facilities Manager"},
+  {"state": "Pending Approval", "action": "Cancel", "next_state": "Cancelled", "allowed": "Facilities Manager"},
+  {"state": "Approved", "action": "Cancel", "next_state": "Cancelled", "allowed": "Facilities Manager"},
+  {"state": "Assigned", "action": "Cancel", "next_state": "Cancelled", "allowed": "Facilities Manager"}
+ ],
+ "workflow_name": "Facilities Work Order Workflow",
+ "workflow_state_field": "status"
+}
