@@ -39,6 +39,11 @@ def notify_work_order_status_change(doc):
 	if settings.enable_sms_notifications:
 		_send_sms(recipient_user, f"{subject}: {doc.name} ({doc.status})")
 
+	if settings.enable_whatsapp_intake and doc.source == "WhatsApp" and doc.raised_by:
+		from facilities_management.utils.whatsapp import send_whatsapp_message
+
+		send_whatsapp_message(doc.raised_by, f"{subject}: {doc.name} is now {doc.status}.")
+
 
 def _send_email(user, subject, message):
 	email = frappe.db.get_value("User", user, "email")

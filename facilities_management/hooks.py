@@ -71,9 +71,16 @@ standard_portal_menu_items = [
 # NOTE: Facilities Work Order, Vendor Approval Request, Safety Inspection and
 # Preventive Maintenance Schedule already trigger their own side effects
 # (notifications, auto-record creation) from within their own controllers
-# (see each doctype's .py file), so no additional doc_events wiring is
-# required here. Add entries below only for cross-doctype hooks.
-doc_events = {}
+# (see each doctype's .py file). WhatsApp intake is likewise self-contained
+# (utils/whatsapp.py is a webhook endpoint, not a doc_event). Email intake is
+# the one cross-doctype hook: Frappe's own email_append_to mechanism creates
+# the Facilities Work Order, then this enriches it once the resulting
+# Communication is inserted.
+doc_events = {
+	"Communication": {
+		"after_insert": "facilities_management.utils.email_intake.on_communication_insert",
+	},
+}
 
 # Website
 # ------------------

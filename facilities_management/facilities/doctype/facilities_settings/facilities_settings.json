@@ -22,7 +22,15 @@
   "sms_sender_id",
   "sms_api_url",
   "sms_api_key",
-  "sms_api_username"
+  "sms_api_username",
+  "whatsapp_sb",
+  "enable_whatsapp_intake",
+  "whatsapp_send_acknowledgement",
+  "column_break_whatsapp",
+  "whatsapp_phone_number_id",
+  "whatsapp_verify_token",
+  "whatsapp_access_token",
+  "whatsapp_api_version"
  ],
  "fields": [
   {
@@ -128,6 +136,54 @@
    "fieldtype": "Data",
    "label": "SMS API Username",
    "depends_on": "eval:doc.enable_sms_notifications"
+  },
+  {
+   "fieldname": "whatsapp_sb",
+   "fieldtype": "Section Break",
+   "label": "WhatsApp Integration (Meta Cloud API)"
+  },
+  {
+   "fieldname": "enable_whatsapp_intake",
+   "fieldtype": "Check",
+   "label": "Enable WhatsApp Request Intake",
+   "default": "0"
+  },
+  {
+   "fieldname": "whatsapp_send_acknowledgement",
+   "fieldtype": "Check",
+   "label": "Send Acknowledgement Reply",
+   "default": "1",
+   "depends_on": "eval:doc.enable_whatsapp_intake"
+  },
+  {
+   "fieldname": "column_break_whatsapp",
+   "fieldtype": "Column Break",
+   "label": ""
+  },
+  {
+   "fieldname": "whatsapp_phone_number_id",
+   "fieldtype": "Data",
+   "label": "WhatsApp Phone Number ID",
+   "depends_on": "eval:doc.enable_whatsapp_intake"
+  },
+  {
+   "fieldname": "whatsapp_verify_token",
+   "fieldtype": "Data",
+   "label": "Webhook Verify Token",
+   "depends_on": "eval:doc.enable_whatsapp_intake"
+  },
+  {
+   "fieldname": "whatsapp_access_token",
+   "fieldtype": "Password",
+   "label": "Cloud API Access Token",
+   "depends_on": "eval:doc.enable_whatsapp_intake"
+  },
+  {
+   "fieldname": "whatsapp_api_version",
+   "fieldtype": "Data",
+   "label": "Graph API Version",
+   "default": "v20.0",
+   "depends_on": "eval:doc.enable_whatsapp_intake"
   }
  ],
  "index_web_pages_for_search": 1,

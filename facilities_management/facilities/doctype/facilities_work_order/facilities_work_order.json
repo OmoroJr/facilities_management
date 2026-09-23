@@ -11,6 +11,7 @@
   "priority",
   "column_break_1",
   "requested_by",
+  "raised_by",
   "department",
   "client_type",
   "external_client_name",
@@ -89,6 +90,13 @@
    "read_only": 1
   },
   {
+   "fieldname": "raised_by",
+   "fieldtype": "Data",
+   "label": "Raised By (Email / Phone)",
+   "read_only": 1,
+   "description": "Auto-filled from the inbound email address or WhatsApp number when this request did not come from a System User."
+  },
+  {
    "fieldname": "department",
    "fieldtype": "Link",
    "label": "Department",
@@ -138,7 +146,7 @@
    "fieldname": "source",
    "fieldtype": "Select",
    "label": "Source",
-   "options": "Web Portal\nEmail\nPhone\nMobile App\nWalk-in",
+   "options": "Web Portal\nEmail\nWhatsApp\nPhone\nMobile App\nWalk-in",
    "default": "Web Portal"
   },
   {
@@ -315,5 +323,8 @@
  "states": [],
  "track_changes": 1,
  "is_submittable": 0,
- "autoname": "WO-.YYYY.-.#####"
+ "autoname": "WO-.YYYY.-.#####",
+ "email_append_to": 1,
+ "sender_field": "raised_by",
+ "subject_field": "subject"
 }

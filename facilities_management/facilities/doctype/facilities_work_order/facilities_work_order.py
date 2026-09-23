@@ -9,6 +9,13 @@ from frappe.model.document import Document
 class FacilitiesWorkOrder(Document):
 	def validate(self):
 		self.set_sla_due_date()
+		self.auto_submit_external_intake()
+
+	def auto_submit_external_intake(self):
+		# Tickets created by inbound email/WhatsApp have no human present to
+		# press "Submit" - move them straight into the approval queue.
+		if self.is_new() and self.status == "Draft" and self.source in ("Email", "WhatsApp"):
+			self.status = "Submitted"
 
 	def set_sla_due_date(self):
 		from frappe.utils import now_datetime, add_to_date

@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"hdr1\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Facilities</span>\",\"col\":12}},{\"id\":\"sc1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Facilities Work Order\",\"col\":3}},{\"id\":\"sc2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Facility Asset\",\"col\":3}},{\"id\":\"sc3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Preventive Maintenance Schedule\",\"col\":3}},{\"id\":\"sc4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Room Booking\",\"col\":3}},{\"id\":\"sc5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle Booking\",\"col\":3}},{\"id\":\"sc6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Facilities Purchase Order\",\"col\":3}},{\"id\":\"sc7\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vendor Approval Request\",\"col\":3}},{\"id\":\"sc8\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Safety Inspection\",\"col\":3}},{\"id\":\"sc9\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open Work Orders\",\"col\":3}},{\"id\":\"sc10\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Technician Performance\",\"col\":3}}]",
+ "content": "[{\"id\": \"hdr1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Facilities</span>\", \"col\": 12}}, {\"id\": \"sc1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Work Order\", \"col\": 3}}, {\"id\": \"sc2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Asset\", \"col\": 3}}, {\"id\": \"sc3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Preventive Maintenance Schedule\", \"col\": 3}}, {\"id\": \"sc4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Room Booking\", \"col\": 3}}, {\"id\": \"sc5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Booking\", \"col\": 3}}, {\"id\": \"sc6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Purchase Order\", \"col\": 3}}, {\"id\": \"sc7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vendor Approval Request\", \"col\": 3}}, {\"id\": \"sc8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Safety Inspection\", \"col\": 3}}, {\"id\": \"sc9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Room\", \"col\": 3}}, {\"id\": \"sc10\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Vehicle\", \"col\": 3}}, {\"id\": \"sc11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Maintenance Contract\", \"col\": 3}}, {\"id\": \"sc12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Settings\", \"col\": 3}}, {\"id\": \"hdr2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Reports</span>\", \"col\": 12}}, {\"id\": \"sc13\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Open Work Orders\", \"col\": 3}}, {\"id\": \"sc14\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Completed Work Orders\", \"col\": 3}}, {\"id\": \"sc15\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Technician Performance\", \"col\": 3}}, {\"id\": \"sc16\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asset Maintenance History\", \"col\": 3}}, {\"id\": \"sc17\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Preventive Maintenance Compliance\", \"col\": 3}}, {\"id\": \"sc18\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asset Register Summary\", \"col\": 3}}, {\"id\": \"sc19\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Resource Booking Summary\", \"col\": 3}}, {\"id\": \"sc20\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Maintenance Contract Status\", \"col\": 3}}, {\"id\": \"sc21\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vendor Approval Pipeline\", \"col\": 3}}, {\"id\": \"sc22\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Order Summary\", \"col\": 3}}, {\"id\": \"sc23\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Safety Inspection Compliance\", \"col\": 3}}]",
  "creation": "2026-09-22 00:00:00.000000",
  "doctype": "Workspace",
  "for_user": "",
@@ -10,7 +10,7 @@
  "is_hidden": 0,
  "label": "Facilities",
  "links": [],
- "modified": "2026-09-22 00:00:00.000000",
+ "modified": "2026-09-23 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Facilities",
  "name": "Facilities",
@@ -22,16 +22,198 @@
  "restrict_to_domain": "",
  "sequence_id": 1,
  "shortcuts": [
-  {"label": "Facilities Work Order", "link_to": "Facilities Work Order", "type": "DocType", "doc_view": "List", "color": "Blue", "icon": "tool"},
-  {"label": "Facility Asset", "link_to": "Facility Asset", "type": "DocType", "doc_view": "List", "color": "Green", "icon": "tool"},
-  {"label": "Preventive Maintenance Schedule", "link_to": "Preventive Maintenance Schedule", "type": "DocType", "doc_view": "List", "color": "Orange", "icon": "calendar"},
-  {"label": "Room Booking", "link_to": "Room Booking", "type": "DocType", "doc_view": "List", "color": "Purple", "icon": "small-file"},
-  {"label": "Vehicle Booking", "link_to": "Vehicle Booking", "type": "DocType", "doc_view": "List", "color": "Purple", "icon": "small-file"},
-  {"label": "Facilities Purchase Order", "link_to": "Facilities Purchase Order", "type": "DocType", "doc_view": "List", "color": "Red", "icon": "shopping-cart"},
-  {"label": "Vendor Approval Request", "link_to": "Vendor Approval Request", "type": "DocType", "doc_view": "List", "color": "Yellow", "icon": "small-file"},
-  {"label": "Safety Inspection", "link_to": "Safety Inspection", "type": "DocType", "doc_view": "List", "color": "Red", "icon": "small-file"},
-  {"label": "Open Work Orders", "link_to": "Open Work Orders", "type": "Report", "doc_view": "", "color": "Grey", "icon": "small-file"},
-  {"label": "Technician Performance", "link_to": "Technician Performance", "type": "Report", "doc_view": "", "color": "Grey", "icon": "small-file"}
+  {
+   "label": "Facilities Work Order",
+   "link_to": "Facilities Work Order",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Blue",
+   "icon": "tool"
+  },
+  {
+   "label": "Facility Asset",
+   "link_to": "Facility Asset",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Green",
+   "icon": "tool"
+  },
+  {
+   "label": "Preventive Maintenance Schedule",
+   "link_to": "Preventive Maintenance Schedule",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Orange",
+   "icon": "calendar"
+  },
+  {
+   "label": "Room Booking",
+   "link_to": "Room Booking",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Purple",
+   "icon": "small-file"
+  },
+  {
+   "label": "Vehicle Booking",
+   "link_to": "Vehicle Booking",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Purple",
+   "icon": "small-file"
+  },
+  {
+   "label": "Facilities Purchase Order",
+   "link_to": "Facilities Purchase Order",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Red",
+   "icon": "shopping-cart"
+  },
+  {
+   "label": "Vendor Approval Request",
+   "link_to": "Vendor Approval Request",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Yellow",
+   "icon": "small-file"
+  },
+  {
+   "label": "Safety Inspection",
+   "link_to": "Safety Inspection",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Red",
+   "icon": "small-file"
+  },
+  {
+   "label": "Facility Room",
+   "link_to": "Facility Room",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Purple",
+   "icon": "small-file"
+  },
+  {
+   "label": "Facility Vehicle",
+   "link_to": "Facility Vehicle",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Purple",
+   "icon": "small-file"
+  },
+  {
+   "label": "Facilities Maintenance Contract",
+   "link_to": "Facilities Maintenance Contract",
+   "type": "DocType",
+   "doc_view": "List",
+   "color": "Yellow",
+   "icon": "small-file"
+  },
+  {
+   "label": "Facilities Settings",
+   "link_to": "Facilities Settings",
+   "type": "DocType",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "settings"
+  },
+  {
+   "label": "Open Work Orders",
+   "link_to": "Open Work Orders",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Completed Work Orders",
+   "link_to": "Completed Work Orders",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Technician Performance",
+   "link_to": "Technician Performance",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Asset Maintenance History",
+   "link_to": "Asset Maintenance History",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Preventive Maintenance Compliance",
+   "link_to": "Preventive Maintenance Compliance",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Asset Register Summary",
+   "link_to": "Asset Register Summary",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Resource Booking Summary",
+   "link_to": "Resource Booking Summary",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Maintenance Contract Status",
+   "link_to": "Maintenance Contract Status",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Vendor Approval Pipeline",
+   "link_to": "Vendor Approval Pipeline",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Purchase Order Summary",
+   "link_to": "Purchase Order Summary",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Safety Inspection Compliance",
+   "link_to": "Safety Inspection Compliance",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Monthly Work Order Summary",
+   "link_to": "Monthly Work Order Summary",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  }
  ],
  "title": "Facilities"
 }
