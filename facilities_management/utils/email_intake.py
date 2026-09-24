@@ -19,6 +19,12 @@ def on_communication_insert(doc, method=None):
 	if doc.sent_or_received != "Received":
 		return
 
+	from facilities_management.utils.notifications import get_settings
+
+	settings = get_settings()
+	if not settings.enable_email_intake:
+		return
+
 	# Only enrich on the *founding* email - the one Frappe's email_append_to
 	# mechanism just used to create this ticket (it already ran and set
 	# raised_by/subject on the doc before this Communication was inserted,
@@ -60,17 +66,13 @@ def on_communication_insert(doc, method=None):
 	if wo.status == "Draft":
 		wo.db_set("status", "Submitted", notify=False)
 
-	_send_acknowledgement(wo.name, sender_email, wo.status)
+	_send_acknowledgement(wo.name, sender_email, wo.status, settings)
 
 
-def _send_acknowledgement(ticket_name, sender_email, status):
-	from facilities_management.utils.notifications import get_settings
+def _send_acknowledgement(ticket_name, sender_email, status, settings):
 	from facilities_management.utils.tracking import get_tracking_url
 
-	if not sender_email:
-		return
-	settings = get_settings()
-	if not settings.enable_email_notifications:
+	if not sender_email or not settings.email_send_acknowledgement:
 		return
 
 	tracking_url = get_tracking_url(ticket_name)

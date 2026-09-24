@@ -23,6 +23,9 @@
   "sms_api_url",
   "sms_api_key",
   "sms_api_username",
+  "email_sb",
+  "enable_email_intake",
+  "email_send_acknowledgement",
   "whatsapp_sb",
   "enable_whatsapp_intake",
   "whatsapp_send_acknowledgement",
@@ -136,6 +139,25 @@
    "fieldtype": "Data",
    "label": "SMS API Username",
    "depends_on": "eval:doc.enable_sms_notifications"
+  },
+  {
+   "fieldname": "email_sb",
+   "fieldtype": "Section Break",
+   "label": "Email Request Intake"
+  },
+  {
+   "fieldname": "enable_email_intake",
+   "fieldtype": "Check",
+   "label": "Enable Email Request Intake",
+   "default": "0",
+   "description": "Governs enrichment (Internal/External detection, auto-submit, acknowledgement) once an email creates a ticket. It does not by itself make emails create tickets - that still needs an Email Account with Append To = Facilities Work Order (see README)."
+  },
+  {
+   "fieldname": "email_send_acknowledgement",
+   "fieldtype": "Check",
+   "label": "Send Acknowledgement Reply",
+   "default": "1",
+   "depends_on": "eval:doc.enable_email_intake"
   },
   {
    "fieldname": "whatsapp_sb",

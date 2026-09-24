@@ -25,18 +25,25 @@ the same Draft -> Submitted -> ... workflow.
 **Web portal** - no setup needed. `/facilities-work-order-request` is a
 public Web Form (login required) that any Facilities Client can submit.
 
-**Email** - uses Frappe's built-in inbound-email mechanism, no custom code
-to configure:
+**Email** - uses Frappe's built-in inbound-email mechanism for the ticket
+creation itself, plus a Facilities Settings toggle for everything after that:
 1. Desk > Email Account > New. Point it (IMAP) at the facilities inbox.
 2. Set "Append To" = `Facilities Work Order`, enable Incoming.
 3. Save. New emails to that inbox create a Work Order (subject = email
-   subject, `raised_by` = sender's address); replies thread onto the same
-   ticket as Communications.
-4. `utils/email_intake.py` then runs once, on the founding email only: it
-   matches the sender against a System User (Internal) or not (External),
-   fills `description` from the email body, auto-submits the ticket out of
-   Draft into the approval queue, and emails the sender an acknowledgement
-   with their ticket ID and a link to track it (see below).
+   subject, `raised_by` = sender's address) - this part is core Frappe
+   behaviour and always on once the Email Account is configured; replies
+   thread onto the same ticket as Communications.
+4. In Facilities Settings, tick **"Enable Email Request Intake"**. With it
+   on, `utils/email_intake.py` runs once on the founding email: matches the
+   sender against a System User (Internal) or not (External), fills
+   `description` from the email body, auto-submits the ticket out of Draft
+   into the approval queue, and (if "Send Acknowledgement Reply" is also
+   ticked) emails the sender their ticket ID and tracking link.
+   With it off, emails still create bare Draft tickets via step 3 (that part
+   isn't gated - it's a DocType-level flag Frappe itself acts on) but they
+   just sit there unenriched until someone manually reviews and submits
+   them, so treat the setting as a way to hold intake for review rather
+   than a hard stop on ticket creation.
 
 ## Ticket tracking (no login required)
 
