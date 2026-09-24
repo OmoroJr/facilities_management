@@ -1,6 +1,27 @@
 {
- "charts": [],
- "content": "[{\"id\": \"hdr1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Facilities</span>\", \"col\": 12}}, {\"id\": \"sc1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Work Order\", \"col\": 3}}, {\"id\": \"sc2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Asset\", \"col\": 3}}, {\"id\": \"sc3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Preventive Maintenance Schedule\", \"col\": 3}}, {\"id\": \"sc4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Room Booking\", \"col\": 3}}, {\"id\": \"sc5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Booking\", \"col\": 3}}, {\"id\": \"sc6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Purchase Order\", \"col\": 3}}, {\"id\": \"sc7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vendor Approval Request\", \"col\": 3}}, {\"id\": \"sc8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Safety Inspection\", \"col\": 3}}, {\"id\": \"sc9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Room\", \"col\": 3}}, {\"id\": \"sc10\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Vehicle\", \"col\": 3}}, {\"id\": \"sc11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Maintenance Contract\", \"col\": 3}}, {\"id\": \"sc12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Settings\", \"col\": 3}}, {\"id\": \"hdr2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Reports</span>\", \"col\": 12}}, {\"id\": \"sc13\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Open Work Orders\", \"col\": 3}}, {\"id\": \"sc14\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Completed Work Orders\", \"col\": 3}}, {\"id\": \"sc15\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Technician Performance\", \"col\": 3}}, {\"id\": \"sc16\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asset Maintenance History\", \"col\": 3}}, {\"id\": \"sc17\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Preventive Maintenance Compliance\", \"col\": 3}}, {\"id\": \"sc18\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asset Register Summary\", \"col\": 3}}, {\"id\": \"sc19\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Resource Booking Summary\", \"col\": 3}}, {\"id\": \"sc20\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Maintenance Contract Status\", \"col\": 3}}, {\"id\": \"sc21\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vendor Approval Pipeline\", \"col\": 3}}, {\"id\": \"sc22\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Order Summary\", \"col\": 3}}, {\"id\": \"sc23\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Safety Inspection Compliance\", \"col\": 3}}]",
+ "charts": [
+  {
+   "doctype": "Workspace Chart",
+   "chart_name": "Work Orders by Status",
+   "label": "Work Orders by Status"
+  },
+  {
+   "doctype": "Workspace Chart",
+   "chart_name": "Work Orders by Priority",
+   "label": "Work Orders by Priority"
+  },
+  {
+   "doctype": "Workspace Chart",
+   "chart_name": "Work Orders Created Monthly",
+   "label": "Work Orders Created Monthly"
+  },
+  {
+   "doctype": "Workspace Chart",
+   "chart_name": "Safety Inspections by Status",
+   "label": "Safety Inspections by Status"
+  }
+ ],
+ "content": "[{\"id\": \"hdr0\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Key Metrics</span>\", \"col\": 12}}, {\"id\": \"nc1\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Open Work Orders\", \"col\": 4}}, {\"id\": \"nc2\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pending Approval\", \"col\": 4}}, {\"id\": \"nc3\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Completed Work Orders\", \"col\": 4}}, {\"id\": \"nc4\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Pending Vendor Approvals\", \"col\": 4}}, {\"id\": \"nc5\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Active PM Schedules\", \"col\": 4}}, {\"id\": \"nc6\", \"type\": \"number_card\", \"data\": {\"number_card_name\": \"Safety Inspections Needing Attention\", \"col\": 4}}, {\"id\": \"hdr_charts\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Charts</span>\", \"col\": 12}}, {\"id\": \"ch1\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Work Orders by Status\", \"col\": 6}}, {\"id\": \"ch2\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Work Orders by Priority\", \"col\": 6}}, {\"id\": \"ch3\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Work Orders Created Monthly\", \"col\": 6}}, {\"id\": \"ch4\", \"type\": \"chart\", \"data\": {\"chart_name\": \"Safety Inspections by Status\", \"col\": 6}}, {\"id\": \"hdr1\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Facilities</span>\", \"col\": 12}}, {\"id\": \"sc1\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Work Order\", \"col\": 3}}, {\"id\": \"sc2\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Asset\", \"col\": 3}}, {\"id\": \"sc3\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Preventive Maintenance Schedule\", \"col\": 3}}, {\"id\": \"sc4\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Room Booking\", \"col\": 3}}, {\"id\": \"sc5\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vehicle Booking\", \"col\": 3}}, {\"id\": \"sc6\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Purchase Order\", \"col\": 3}}, {\"id\": \"sc7\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vendor Approval Request\", \"col\": 3}}, {\"id\": \"sc8\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Safety Inspection\", \"col\": 3}}, {\"id\": \"sc9\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Room\", \"col\": 3}}, {\"id\": \"sc10\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facility Vehicle\", \"col\": 3}}, {\"id\": \"sc11\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Maintenance Contract\", \"col\": 3}}, {\"id\": \"sc12\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Settings\", \"col\": 3}}, {\"id\": \"hdr2\", \"type\": \"header\", \"data\": {\"text\": \"<span class=\\\"h4\\\">Reports</span>\", \"col\": 12}}, {\"id\": \"sc13\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Open Work Orders\", \"col\": 3}}, {\"id\": \"sc14\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Completed Work Orders\", \"col\": 3}}, {\"id\": \"sc15\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Technician Performance\", \"col\": 3}}, {\"id\": \"sc16\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asset Maintenance History\", \"col\": 3}}, {\"id\": \"sc17\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Preventive Maintenance Compliance\", \"col\": 3}}, {\"id\": \"sc18\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Asset Register Summary\", \"col\": 3}}, {\"id\": \"sc19\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Resource Booking Summary\", \"col\": 3}}, {\"id\": \"sc20\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Maintenance Contract Status\", \"col\": 3}}, {\"id\": \"sc21\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Vendor Approval Pipeline\", \"col\": 3}}, {\"id\": \"sc22\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Purchase Order Summary\", \"col\": 3}}, {\"id\": \"sc23\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Safety Inspection Compliance\", \"col\": 3}}, {\"id\": \"sc_sla_compliance\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"SLA Compliance\", \"col\": 3}}, {\"id\": \"sc_facilities_low_stock_alerts\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Facilities Low Stock Alerts\", \"col\": 3}}, {\"id\": \"sc_monthly_work_order_summary\", \"type\": \"shortcut\", \"data\": {\"shortcut_name\": \"Monthly Work Order Summary\", \"col\": 3}}]",
  "creation": "2026-09-22 00:00:00.000000",
  "doctype": "Workspace",
  "for_user": "",
@@ -14,7 +35,38 @@
  "modified_by": "Administrator",
  "module": "Facilities",
  "name": "Facilities",
- "number_cards": [],
+ "number_cards": [
+  {
+   "doctype": "Workspace Number Card",
+   "number_card_name": "Open Work Orders",
+   "label": "Open Work Orders"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "number_card_name": "Pending Approval",
+   "label": "Pending Approval"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "number_card_name": "Completed Work Orders",
+   "label": "Completed Work Orders"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "number_card_name": "Pending Vendor Approvals",
+   "label": "Pending Vendor Approvals"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "number_card_name": "Active PM Schedules",
+   "label": "Active PM Schedules"
+  },
+  {
+   "doctype": "Workspace Number Card",
+   "number_card_name": "Safety Inspections Needing Attention",
+   "label": "Safety Inspections Needing Attention"
+  }
+ ],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
@@ -209,6 +261,22 @@
   {
    "label": "Monthly Work Order Summary",
    "link_to": "Monthly Work Order Summary",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "SLA Compliance",
+   "link_to": "SLA Compliance",
+   "type": "Report",
+   "doc_view": "",
+   "color": "Grey",
+   "icon": "small-file"
+  },
+  {
+   "label": "Facilities Low Stock Alerts",
+   "link_to": "Facilities Low Stock Alerts",
    "type": "Report",
    "doc_view": "",
    "color": "Grey",
