@@ -1,0 +1,21 @@
+{
+ "doctype": "Number Card",
+ "label": "Open Work Orders",
+ "document_type": "Facilities Work Order",
+ "type": "Document Type",
+ "function": "Count",
+ "filters_json": "[[\"Facilities Work Order\", \"status\", \"in\", [\"Submitted\", \"Pending Approval\", \"Approved\", \"Assigned\", \"In Progress\", \"On Hold\"]]]",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "show_percentage_stats": 1,
+ "stats_time_interval": "Monthly",
+ "color": "#2490EF",
+ "docstatus": 0,
+ "creation": "2026-09-24 00:00:00.000000",
+ "modified": "2026-09-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Open Work Orders"
+}

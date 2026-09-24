@@ -56,6 +56,25 @@ requesters, who don't have one.
   ("Track a Ticket") for anyone who is logged in but prefers not to dig
   through the list view.
 
+## Dashboard
+
+A standard Frappe Dashboard ("Facilities") ships with the app - Desk >
+Dashboards > Facilities, or directly at `/app/dashboard-view/Facilities`.
+
+**Number Cards** (6): Open Work Orders, Pending Approval, Completed Work
+Orders (with month-over-month %), Pending Vendor Approvals, Active PM
+Schedules, Safety Inspections Needing Attention.
+
+**Charts** (4): Work Orders by Status (donut), Work Orders by Priority
+(bar), Work Orders Created - Monthly (line trend), Safety Inspections by
+Status (donut).
+
+All are plain "Document Type" cards and "Group By"/"Count" charts built
+from static filters - no custom Python behind them, so they're editable
+from the Desk UI (Customize > Number Card / Dashboard Chart) the same way
+any standard Frappe dashboard is, if you want to add more or adjust the
+groupings.
+
 **WhatsApp** - uses Meta's WhatsApp Cloud API directly (no third-party app):
 1. In Facilities Settings, tick "Enable WhatsApp Request Intake" and fill in
    Phone Number ID, a Cloud API Access Token, and a Webhook Verify Token

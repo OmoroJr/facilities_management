@@ -1,0 +1,22 @@
+{
+ "doctype": "Dashboard Chart",
+ "chart_name": "Work Orders by Status",
+ "chart_type": "Group By",
+ "document_type": "Facilities Work Order",
+ "group_by_type": "Count",
+ "group_by_based_on": "status",
+ "number_of_groups": 10,
+ "type": "Donut",
+ "filters_json": "[]",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "timeseries": 0,
+ "docstatus": 0,
+ "creation": "2026-09-24 00:00:00.000000",
+ "modified": "2026-09-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Work Orders by Status"
+}

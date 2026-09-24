@@ -1,0 +1,22 @@
+{
+ "doctype": "Dashboard Chart",
+ "chart_name": "Work Orders Created Monthly",
+ "chart_type": "Count",
+ "document_type": "Facilities Work Order",
+ "based_on": "creation",
+ "type": "Line",
+ "timespan": "Last Year",
+ "time_interval": "Monthly",
+ "filters_json": "[]",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "timeseries": 1,
+ "docstatus": 0,
+ "creation": "2026-09-24 00:00:00.000000",
+ "modified": "2026-09-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Work Orders Created Monthly"
+}

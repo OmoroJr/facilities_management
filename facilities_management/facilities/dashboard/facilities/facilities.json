@@ -1,0 +1,72 @@
+{
+ "doctype": "Dashboard",
+ "dashboard_name": "Facilities",
+ "module": "Facilities",
+ "is_standard": 1,
+ "is_default": 0,
+ "cards": [
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Open Work Orders"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Pending Approval"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Completed Work Orders"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Pending Vendor Approvals"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Active PM Schedules"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Safety Inspections Needing Attention"
+  }
+ ],
+ "charts": [
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Work Orders by Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Work Orders by Priority",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Work Orders Created Monthly",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Safety Inspections by Status",
+   "width": "Half"
+  }
+ ],
+ "docstatus": 0,
+ "creation": "2026-09-24 00:00:00.000000",
+ "modified": "2026-09-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Facilities"
+}
