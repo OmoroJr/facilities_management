@@ -100,9 +100,14 @@ def _process_message(message, settings):
 	}).insert(ignore_permissions=True)
 
 	if wo_name and settings.whatsapp_send_acknowledgement:
+		from facilities_management.utils.tracking import get_tracking_url
+
 		send_whatsapp_message(
 			from_number,
-			_("Thanks - we've logged your request as {0}. We'll update you here once it's assigned.").format(wo_name),
+			_(
+				"Thanks - we've logged your request as {0}. We'll update you here once it's "
+				"assigned. Track it any time at: {1}"
+			).format(wo_name, get_tracking_url(wo_name)),
 		)
 
 

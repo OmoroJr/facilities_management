@@ -59,3 +59,32 @@ def on_communication_insert(doc, method=None):
 	# press "Submit" - move it into the approval queue automatically.
 	if wo.status == "Draft":
 		wo.db_set("status", "Submitted", notify=False)
+
+	_send_acknowledgement(wo.name, sender_email, wo.status)
+
+
+def _send_acknowledgement(ticket_name, sender_email, status):
+	from facilities_management.utils.notifications import get_settings
+	from facilities_management.utils.tracking import get_tracking_url
+
+	if not sender_email:
+		return
+	settings = get_settings()
+	if not settings.enable_email_notifications:
+		return
+
+	tracking_url = get_tracking_url(ticket_name)
+	message = frappe._(
+		"Thanks - we've received your request and logged it as <b>{0}</b> (status: {1}).<br><br>"
+		"You can check its progress any time at: <a href=\"{2}\">{2}</a><br>"
+		"You'll need this email address and the ticket ID above."
+	).format(ticket_name, status, tracking_url)
+
+	try:
+		frappe.sendmail(
+			recipients=[sender_email],
+			subject=frappe._("We've received your request: {0}").format(ticket_name),
+			message=message,
+		)
+	except Exception:
+		frappe.log_error(title="Facilities: acknowledgement email failed")

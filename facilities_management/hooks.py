@@ -53,6 +53,10 @@ standard_portal_menu_items = [
 		"role": "Facilities Client",
 	},
 	{
+		"title": "Track a Ticket",
+		"route": "/track-ticket",
+	},
+	{
 		"title": "Room Bookings",
 		"route": "/app/room-booking",
 		"reference_doctype": "Room Booking",
