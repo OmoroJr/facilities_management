@@ -26,6 +26,11 @@
   "email_sb",
   "enable_email_intake",
   "email_send_acknowledgement",
+  "email_alerts_sb",
+  "email_notify_new_ticket",
+  "email_notify_replies",
+  "email_notify_sla_breach",
+  "email_reopen_on_reply",
   "whatsapp_sb",
   "enable_whatsapp_intake",
   "whatsapp_send_acknowledgement",
@@ -158,6 +163,40 @@
    "label": "Send Acknowledgement Reply",
    "default": "1",
    "depends_on": "eval:doc.enable_email_intake"
+  },
+  {
+   "fieldname": "email_alerts_sb",
+   "fieldtype": "Section Break",
+   "label": "Email Alerts",
+   "depends_on": "eval:doc.enable_email_notifications"
+  },
+  {
+   "fieldname": "email_notify_new_ticket",
+   "fieldtype": "Check",
+   "label": "Alert Managers on New Ticket",
+   "default": "1",
+   "depends_on": "eval:doc.enable_email_notifications"
+  },
+  {
+   "fieldname": "email_notify_replies",
+   "fieldtype": "Check",
+   "label": "Forward Ticket Replies and Comments to Assignee",
+   "default": "1",
+   "depends_on": "eval:doc.enable_email_notifications"
+  },
+  {
+   "fieldname": "email_notify_sla_breach",
+   "fieldtype": "Check",
+   "label": "Alert on SLA Breach",
+   "default": "1",
+   "depends_on": "eval:doc.enable_email_notifications"
+  },
+  {
+   "fieldname": "email_reopen_on_reply",
+   "fieldtype": "Check",
+   "label": "Reopen Completed/Closed Ticket on Customer Reply",
+   "default": "1",
+   "depends_on": "eval:doc.enable_email_notifications"
   },
   {
    "fieldname": "whatsapp_sb",

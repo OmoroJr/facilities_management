@@ -40,6 +40,7 @@ scheduler_events = {
 	],
 	"hourly": [
 		"facilities_management.utils.scheduler.escalate_unassigned_work_orders",
+		"facilities_management.utils.scheduler.notify_sla_breaches",
 	],
 }
 
@@ -72,19 +73,31 @@ standard_portal_menu_items = [
 
 # Document Events
 # ------------------
-# NOTE: Facilities Work Order, Vendor Approval Request, Safety Inspection and
-# Preventive Maintenance Schedule already trigger their own side effects
-# (notifications, auto-record creation) from within their own controllers
-# (see each doctype's .py file). WhatsApp intake is likewise self-contained
-# (utils/whatsapp.py is a webhook endpoint, not a doc_event). Email intake is
-# the one cross-doctype hook: Frappe's own email_append_to mechanism creates
-# the Facilities Work Order, then this enriches it once the resulting
-# Communication is inserted.
+# Status-change mail (Pending Approval / Assigned / Completed ...) is sent from
+# the Facilities Work Order controller via utils/notifications.py. The hooks
+# below add the cross-document email behaviour:
+#   - Communication: enrich + acknowledge the founding email (email_intake),
+#     and forward later customer replies to the assignee (email_hooks)
+#   - Facilities Work Order: new-ticket alert, assignee-change mail
+#   - Comment: internal comments on a ticket reach the assignee
 doc_events = {
 	"Communication": {
-		"after_insert": "facilities_management.utils.email_intake.on_communication_insert",
+		"after_insert": [
+			"facilities_management.utils.email_intake.on_communication_insert",
+			"facilities_management.utils.email_hooks.notify_on_ticket_reply",
+		],
+	},
+	"Facilities Work Order": {
+		"after_insert": "facilities_management.utils.email_hooks.on_work_order_created",
+		"on_update": "facilities_management.utils.email_hooks.on_work_order_assignment_change",
+	},
+	"Comment": {
+		"after_insert": "facilities_management.utils.email_hooks.notify_on_ticket_comment",
 	},
 }
+
+# Re-assert dashboard cards/charts/workspace blocks after every migrate
+after_migrate = ["facilities_management.utils.setup.ensure_dashboard_assets"]
 
 # Website
 # ------------------

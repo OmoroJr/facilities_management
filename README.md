@@ -98,3 +98,20 @@ groupings.
    confirmation back (ticket ID + tracking link) - note Meta only allows
    free-form replies within its 24-hour customer-service window, so anything
    later needs a pre-approved template (not implemented here).
+
+## Email hooks (v0.0.2)
+
+| Trigger | Who is emailed |
+|---|---|
+| Work Order created | Facilities Managers + default approver |
+| Status -> Pending Approval / Assigned / Approved / In Progress / Completed / Closed / Rejected | approver / assignee / requester (external requesters via their raised-by address, with tracking link) |
+| Assignee changed without a status change | new assignee |
+| Customer replies by email on an existing ticket | assignee, or managers if unassigned |
+| Customer replies on a Completed/Closed ticket | ticket is reopened (Assigned if it has a technician, else Approved); assignee/managers are told |
+| Internal comment on a ticket | assignee |
+| SLA due date passed (hourly job, once per ticket) | Facilities Managers + assignee |
+
+Each alert group has a toggle in Facilities Settings -> Email Alerts. Bounces and auto-replies never trigger an acknowledgement.
+
+## Dashboard
+11 charts and 6 number cards on the Facilities workspace and the Facilities dashboard. `after_migrate` re-asserts them from the app's JSON; failures show in Error Log as "Facilities: could not set up ...".

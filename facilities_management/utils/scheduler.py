@@ -99,20 +99,57 @@ def escalate_unassigned_work_orders():
 			)
 
 
-def _notify_role(role, subject, message):
+def notify_sla_breaches():
+	"""Hourly job: alert once when an open Work Order passes its SLA due date."""
+	from facilities_management.utils.notifications import flag_enabled, get_settings
+
+	if not flag_enabled(get_settings(), "email_notify_sla_breach"):
+		return
+
+	overdue = frappe.get_all(
+		"Facilities Work Order",
+		filters={
+			"status": ["in", ["Submitted", "Pending Approval", "Approved", "Assigned", "In Progress", "On Hold"]],
+			"sla_due_date": ["<", now_datetime()],
+			"sla_breach_notified": 0,
+		},
+		fields=["name", "subject", "priority", "sla_due_date", "assigned_to"],
+	)
+	for wo in overdue:
+		_notify_role(
+			"Facilities Manager",
+			_("SLA breached: Work Order {0}").format(wo.name),
+			_("Facilities Work Order {0} ({1}, {2} priority) passed its SLA due date of {3}.").format(
+				wo.name, wo.subject, wo.priority, wo.sla_due_date
+			),
+			extra_users=[wo.assigned_to] if wo.assigned_to else None,
+			reference_doctype="Facilities Work Order",
+			reference_name=wo.name,
+		)
+		frappe.db.set_value(
+			"Facilities Work Order", wo.name, "sla_breach_notified", 1, update_modified=False
+		)
+
+
+def _notify_role(role, subject, message, extra_users=None, reference_doctype=None, reference_name=None):
+	from facilities_management.utils.notifications import get_role_emails
+
 	settings = frappe.get_cached_doc("Facilities Settings")
 	if not settings.enable_email_notifications:
 		return
-	users = frappe.get_all(
-		"Has Role", filters={"role": role, "parenttype": "User"}, fields=["parent"]
-	)
-	emails = [
-		e
-		for e in (frappe.db.get_value("User", u.parent, "email") for u in users)
-		if e
-	]
+	emails = set(get_role_emails(role))
+	for user in extra_users or []:
+		email = frappe.db.get_value("User", user, "email")
+		if email:
+			emails.add(email)
 	if emails:
 		try:
-			frappe.sendmail(recipients=emails, subject=subject, message=message)
+			frappe.sendmail(
+				recipients=sorted(emails),
+				subject=subject,
+				message=message,
+				reference_doctype=reference_doctype,
+				reference_name=reference_name,
+			)
 		except Exception:
 			frappe.log_error(title="Facilities: role notification failed")

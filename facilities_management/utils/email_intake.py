@@ -4,6 +4,27 @@
 import frappe
 
 
+AUTO_SENDER_MARKERS = (
+	"mailer-daemon", "postmaster", "no-reply", "noreply", "do-not-reply", "donotreply", "bounce",
+)
+AUTO_SUBJECT_MARKERS = (
+	"auto:", "automatic reply", "auto-reply", "autoreply", "out of office",
+	"undeliverable", "delivery status notification", "delivery failure",
+)
+
+
+def _is_automated(doc):
+	"""True for bounces/auto-replies, so an acknowledgement can never ping-pong."""
+	sender = (doc.sender or "").lower()
+	subject = (doc.subject or "").lower()
+	if any(m in sender for m in AUTO_SENDER_MARKERS):
+		return True
+	if any(subject.startswith(m) or m in subject for m in AUTO_SUBJECT_MARKERS):
+		return True
+	own = frappe.get_all("Email Account", filters={"enable_incoming": 1}, pluck="email_id")
+	return sender in {(e or "").lower() for e in own}
+
+
 def on_communication_insert(doc, method=None):
 	"""Fires after any Communication is inserted (see hooks.py doc_events).
 
@@ -17,6 +38,8 @@ def on_communication_insert(doc, method=None):
 	if doc.communication_type != "Communication":
 		return
 	if doc.sent_or_received != "Received":
+		return
+	if _is_automated(doc):
 		return
 
 	from facilities_management.utils.notifications import get_settings

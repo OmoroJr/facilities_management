@@ -38,7 +38,8 @@
   "resolution_notes",
   "section_break_5",
   "rating",
-  "linked_purchase_order"
+  "linked_purchase_order",
+  "sla_breach_notified"
  ],
  "fields": [
   {
@@ -246,6 +247,16 @@
    "fieldtype": "Link",
    "label": "Linked Purchase Order",
    "options": "Facilities Purchase Order"
+  },
+  {
+   "fieldname": "sla_breach_notified",
+   "fieldtype": "Check",
+   "label": "SLA Breach Notified",
+   "default": "0",
+   "hidden": 1,
+   "no_copy": 1,
+   "read_only": 1,
+   "print_hide": 1
   }
  ],
  "index_web_pages_for_search": 1,
