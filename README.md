@@ -109,6 +109,7 @@ groupings.
 | Customer replies by email on an existing ticket | assignee, or managers if unassigned |
 | Customer replies on a Completed/Closed ticket | ticket is reopened (Assigned if it has a technician, else Approved); assignee/managers are told |
 | Room/Vehicle Booking created / confirmed / re-timed / cancelled | the person who booked, with a `.ics` calendar invite (confirm/update) or cancellation |
+| "Send Calendar Invite" button on a Confirmed booking (Actions menu; reached by clicking an event in the calendar view) | any emails you enter, or the person who booked if left blank; each gets the `.ics` and a note is logged on the booking |
 | Internal comment on a ticket | assignee |
 | SLA due date passed (hourly job, once per ticket) | Facilities Managers + assignee |
 

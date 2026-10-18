@@ -73,9 +73,11 @@ def _resource(doc):
 	return _("Vehicle"), title, doc.get("destination") or ""
 
 
-def build_ics(doc, cancel=False):
+def build_ics(doc, cancel=False, attendees=None):
 	label, title, location = _resource(doc)
-	attendee = frappe.db.get_value("User", doc.booked_by, "email")
+	booker = frappe.db.get_value("User", doc.booked_by, "email")
+	attendees = attendees or [booker]
+	attendee = booker
 	organizer = (
 		frappe.db.get_value("Email Account", {"default_outgoing": 1}, "email_id") or attendee
 	)
@@ -110,8 +112,10 @@ def build_ics(doc, cancel=False):
 		f"LOCATION:{_esc(location)}",
 		f"STATUS:{'CANCELLED' if cancel else 'CONFIRMED'}",
 		f"ORGANIZER:mailto:{organizer}",
-		f"ATTENDEE;CN={_esc(frappe.utils.get_fullname(doc.booked_by))};RSVP=FALSE:mailto:{attendee}",
 	]
+	for email in attendees:
+		cn = frappe.utils.get_fullname(doc.booked_by) if email == booker else email
+		lines.append(f"ATTENDEE;CN={_esc(cn)};RSVP=FALSE:mailto:{email}")
 	if not cancel:
 		lines += [
 			"BEGIN:VALARM",
@@ -178,3 +182,47 @@ def send_booking_email(doc, method=None):
 		)
 	except Exception:
 		frappe.log_error(title="Facilities: booking invite email failed")
+
+
+@frappe.whitelist()
+def send_invite(doctype, name, recipients=None, message=None):
+	"""Send (or re-send) the calendar invite for a Confirmed booking.
+
+	Called from the 'Send Calendar Invite' button on the booking form, which is
+	also what you reach by clicking an event in the calendar view. `recipients`
+	is a comma/newline separated list of emails; blank means the person who
+	booked. Returns the list of addresses the invite went to.
+	"""
+	if doctype not in ("Room Booking", "Vehicle Booking"):
+		frappe.throw(_("Invites can only be sent for room and vehicle bookings"))
+	doc = frappe.get_doc(doctype, name)
+	doc.check_permission("write")
+	if doc.status != "Confirmed":
+		frappe.throw(_("Only Confirmed bookings can be sent as a calendar invite. Current status: {0}").format(doc.status))
+
+	booker = frappe.db.get_value("User", doc.booked_by, "email") if doc.booked_by else None
+	raw = [r.strip() for r in (recipients or "").replace("\n", ",").replace(";", ",").split(",") if r.strip()]
+	emails = list(dict.fromkeys(raw or ([booker] if booker else [])))
+	if not emails:
+		frappe.throw(_("No recipient: add an email address or set Booked By"))
+	if len(emails) > 20:
+		frappe.throw(_("Please send to 20 recipients or fewer at a time"))
+	for e in emails:
+		frappe.utils.validate_email_address(e, throw=True)
+
+	label, title, location = _resource(doc)
+	when = f"{get_datetime(doc.from_datetime):%a %d %b %Y, %H:%M} - {get_datetime(doc.to_datetime):%H:%M}"
+	details = _("{0}: {1}<br>When: {2}<br>Purpose: {3}").format(label, title, when, doc.purpose or "-")
+	intro = _("You are invited. A calendar invite is attached - open it to add this booking to your calendar.")
+	body = f"{intro}<br><br>" + (f"{frappe.utils.escape_html(message)}<br><br>" if message else "") + details
+
+	frappe.sendmail(
+		recipients=emails,
+		subject=_("Invitation: {0} - {1}").format(title, when),
+		message=body,
+		reference_doctype=doc.doctype,
+		reference_name=doc.name,
+		attachments=[{"fname": "booking.ics", "fcontent": build_ics(doc, attendees=emails)}],
+	)
+	doc.add_comment("Info", _("Calendar invite sent to {0}").format(", ".join(emails)))
+	return emails
