@@ -1,0 +1,18 @@
+{
+ "doctype": "Number Card",
+ "label": "Avg Resolution Hours 30 Days",
+ "type": "Custom",
+ "method": "facilities_management.api.dashboard.avg_resolution_hours_30d",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "show_percentage_stats": 0,
+ "color": "#2490EF",
+ "docstatus": 0,
+ "creation": "2026-10-18 00:00:00.000000",
+ "modified": "2026-10-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Avg Resolution Hours 30 Days"
+}

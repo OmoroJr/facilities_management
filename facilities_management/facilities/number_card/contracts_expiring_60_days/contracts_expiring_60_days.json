@@ -1,0 +1,18 @@
+{
+ "doctype": "Number Card",
+ "label": "Contracts Expiring 60 Days",
+ "type": "Custom",
+ "method": "facilities_management.api.dashboard.contracts_expiring_60d",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "show_percentage_stats": 0,
+ "color": "#7E57C2",
+ "docstatus": 0,
+ "creation": "2026-10-18 00:00:00.000000",
+ "modified": "2026-10-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Contracts Expiring 60 Days"
+}

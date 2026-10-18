@@ -1,0 +1,20 @@
+{
+ "doctype": "Dashboard Chart",
+ "chart_name": "Warranty Status",
+ "chart_type": "Report",
+ "report_name": "Asset Lifecycle and Warranty",
+ "use_report_chart": 1,
+ "type": "Donut",
+ "filters_json": "{}",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "timeseries": 0,
+ "docstatus": 0,
+ "creation": "2026-10-18 00:00:00.000000",
+ "modified": "2026-10-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Warranty Status"
+}

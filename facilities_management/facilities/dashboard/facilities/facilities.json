@@ -34,6 +34,31 @@
    "doctype": "Number Card Link",
    "parentfield": "cards",
    "card": "Safety Inspections Needing Attention"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Overdue Work Orders"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "SLA Compliance 30 Days"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Avg Resolution Hours 30 Days"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Warranties Expiring 90 Days"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Contracts Expiring 60 Days"
   }
  ],
  "charts": [
@@ -60,11 +85,95 @@
    "parentfield": "charts",
    "chart": "Safety Inspections by Status",
    "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Work Orders by Type",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Work Orders by Source",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Assets by Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Assets by Category",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Purchase Orders by Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Room Bookings by Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Vehicle Bookings by Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Open Backlog Aging",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "SLA Compliance by Priority",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Resolution Time by Month",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Resource Utilization",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Spend by Vendor",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Preventive vs Corrective",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Warranty Status",
+   "width": "Half"
   }
  ],
  "docstatus": 0,
  "creation": "2026-09-24 00:00:00.000000",
- "modified": "2026-09-24 00:00:00.000000",
+ "modified": "2026-10-18 00:00:00.000000",
  "modified_by": "Administrator",
  "owner": "Administrator",
  "idx": 0,

@@ -98,3 +98,39 @@ groupings.
    confirmation back (ticket ID + tracking link) - note Meta only allows
    free-form replies within its 24-hour customer-service window, so anything
    later needs a pre-approved template (not implemented here).
+
+## Email hooks (v0.0.2)
+
+| Trigger | Who is emailed |
+|---|---|
+| Work Order created | Facilities Managers + default approver |
+| Status -> Pending Approval / Assigned / Approved / In Progress / Completed / Closed / Rejected | approver / assignee / requester (external requesters via their raised-by address, with tracking link) |
+| Assignee changed without a status change | new assignee |
+| Customer replies by email on an existing ticket | assignee, or managers if unassigned |
+| Customer replies on a Completed/Closed ticket | ticket is reopened (Assigned if it has a technician, else Approved); assignee/managers are told |
+| Room/Vehicle Booking created / confirmed / re-timed / cancelled | the person who booked, with a `.ics` calendar invite (confirm/update) or cancellation |
+| Internal comment on a ticket | assignee |
+| SLA due date passed (hourly job, once per ticket) | Facilities Managers + assignee |
+
+Each alert group has a toggle in Facilities Settings -> Email Alerts. Bounces and auto-replies never trigger an acknowledgement.
+
+## Dashboard
+11 charts and 6 number cards on the Facilities workspace and the Facilities dashboard. `after_migrate` re-asserts them from the app's JSON; failures show in Error Log as "Facilities: could not set up ...".
+
+## Enterprise reports and analytics (v0.0.3)
+
+Every report now has a filter screen; the nine new ones have a KPI summary strip, a chart and drill-down tables.
+
+| Report | What it answers |
+|---|---|
+| Executive Summary | Monthly created vs completed, backlog, SLA %, response/resolution time, rating |
+| Work Order Aging | Open tickets by age bucket and hours past SLA |
+| Response and Resolution Time | Avg/median/slowest by technician, type, priority, department, channel or month |
+| Customer Satisfaction | Avg rating, CSAT %, response rate, star distribution |
+| Asset Lifecycle and Warranty | Age, warranty state, service recency, next PM, repeat-failure assets |
+| Spend Analysis | PO spend by vendor, month, asset category, status or requester |
+| Resource Utilization | Room/vehicle booked hours vs available hours, with utilization bands |
+| Vendor Scorecard | Contracts, expiry exposure, PO spend, fulfilment and share per vendor |
+| Maintenance Mix | Preventive vs corrective vs inspection work, planned-work % |
+
+Dashboard additions: 5 number cards (Overdue Work Orders, SLA Compliance 30 Days, Avg Resolution Hours 30 Days, Warranties Expiring 90 Days, Contracts Expiring 60 Days; backed by `facilities_management.api.dashboard`) and 7 report-driven charts. Ratings are shown on a 1-5 scale. Reports are visible to Facilities Manager, Facilities Approver and System Manager.
