@@ -1,0 +1,18 @@
+{
+ "doctype": "Number Card",
+ "label": "SLA Compliance 30 Days",
+ "type": "Custom",
+ "method": "facilities_management.api.dashboard.sla_compliance_30d",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "show_percentage_stats": 0,
+ "color": "#29A745",
+ "docstatus": 0,
+ "creation": "2026-10-18 00:00:00.000000",
+ "modified": "2026-10-18 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "SLA Compliance 30 Days"
+}

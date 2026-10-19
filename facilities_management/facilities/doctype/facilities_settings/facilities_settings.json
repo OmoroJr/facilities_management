@@ -31,6 +31,7 @@
   "email_notify_replies",
   "email_notify_sla_breach",
   "email_reopen_on_reply",
+  "email_send_booking_invites",
   "whatsapp_sb",
   "enable_whatsapp_intake",
   "whatsapp_send_acknowledgement",
@@ -195,6 +196,13 @@
    "fieldname": "email_reopen_on_reply",
    "fieldtype": "Check",
    "label": "Reopen Completed/Closed Ticket on Customer Reply",
+   "default": "1",
+   "depends_on": "eval:doc.enable_email_notifications"
+  },
+  {
+   "fieldname": "email_send_booking_invites",
+   "fieldtype": "Check",
+   "label": "Email Booking Confirmations with Calendar Invite",
    "default": "1",
    "depends_on": "eval:doc.enable_email_notifications"
   },

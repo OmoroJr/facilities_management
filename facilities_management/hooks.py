@@ -9,6 +9,19 @@ app_license = "MIT"
 app_icon = "octicon octicon-tools"
 app_color = "#2e7d32"
 
+# Apps screen tile -> opens the Facilities workspace at /desk/facilities
+add_to_apps_screen = [
+	{
+		"name": "facilities_management",
+		"logo": "/assets/facilities_management/images/facilities-logo.svg",
+		"title": "Facilities Management",
+		"route": "/desk/facilities",
+	}
+]
+
+# Send /desk/facilities-management to /desk/facilities
+app_include_js = ["/assets/facilities_management/js/facilities_redirect.js"]
+
 # Fixtures
 # ------------------
 fixtures = [
@@ -91,10 +104,19 @@ doc_events = {
 		"after_insert": "facilities_management.utils.email_hooks.on_work_order_created",
 		"on_update": "facilities_management.utils.email_hooks.on_work_order_assignment_change",
 	},
+	"Room Booking": {
+		"on_update": "facilities_management.utils.booking_invites.send_booking_email",
+	},
+	"Vehicle Booking": {
+		"on_update": "facilities_management.utils.booking_invites.send_booking_email",
+	},
 	"Comment": {
 		"after_insert": "facilities_management.utils.email_hooks.notify_on_ticket_comment",
 	},
 }
+
+# Calendar view availability for the booking doctypes
+calendars = ["Room Booking", "Vehicle Booking"]
 
 # Re-assert dashboard cards/charts/workspace blocks after every migrate
 after_migrate = ["facilities_management.utils.setup.ensure_dashboard_assets"]
