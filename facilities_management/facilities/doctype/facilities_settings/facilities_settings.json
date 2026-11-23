@@ -9,6 +9,7 @@
   "work_order_naming_series",
   "default_priority",
   "auto_close_after_days",
+  "ticket_auto_close_days",
   "column_break_sla",
   "default_approver",
   "escalation_hours",
@@ -253,6 +254,12 @@
    "label": "Graph API Version",
    "default": "v20.0",
    "depends_on": "eval:doc.enable_whatsapp_intake"
+  },
+  {
+   "fieldname": "ticket_auto_close_days",
+   "fieldtype": "Int",
+   "label": "Auto-close Resolved Tickets After (days)",
+   "default": "3"
   }
  ],
  "index_web_pages_for_search": 1,

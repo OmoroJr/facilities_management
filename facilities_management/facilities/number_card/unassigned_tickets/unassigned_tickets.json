@@ -1,0 +1,20 @@
+{
+ "doctype": "Number Card",
+ "label": "Unassigned Tickets",
+ "type": "Document Type",
+ "document_type": "Facilities Ticket",
+ "function": "Count",
+ "filters_json": "[[\"Facilities Ticket\", \"status\", \"in\", [\"Open\", \"In Progress\"]], [\"Facilities Ticket\", \"assigned_to\", \"is\", \"not set\"]]",
+ "show_percentage_stats": 0,
+ "color": "#F5A623",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "docstatus": 0,
+ "creation": "2026-11-23 00:00:00.000000",
+ "modified": "2026-11-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Unassigned Tickets"
+}

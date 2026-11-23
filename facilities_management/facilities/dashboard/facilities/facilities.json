@@ -59,6 +59,21 @@
    "doctype": "Number Card Link",
    "parentfield": "cards",
    "card": "Contracts Expiring 60 Days"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Open Tickets"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Unassigned Tickets"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Overdue Tickets"
   }
  ],
  "charts": [
@@ -168,6 +183,24 @@
    "doctype": "Dashboard Chart Link",
    "parentfield": "charts",
    "chart": "Warranty Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Tickets by Status",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Tickets by Category",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Tickets Created Monthly",
    "width": "Half"
   }
  ],

@@ -50,3 +50,13 @@ def contracts_expiring_60d():
 	frappe.has_permission("Facilities Maintenance Contract", "read", throw=True)
 	n = frappe.db.count("Facilities Maintenance Contract", {"status": ["in", ["Active", "Pending Renewal"]], "end_date": ["between", [today(), add_days(today(), 60)]]})
 	return {"value": n, "fieldtype": "Int", "route": ["List", "Facilities Maintenance Contract"], "route_options": {"status": "Pending Renewal"}}
+
+
+@frappe.whitelist()
+def overdue_tickets():
+	frappe.has_permission("Facilities Ticket", "read", throw=True)
+	n = frappe.db.count(
+		"Facilities Ticket",
+		{"status": ["in", ["Open", "In Progress"]], "resolution_due": ["<", now_datetime()]},
+	)
+	return {"value": n, "fieldtype": "Int", "route": ["List", "Facilities Ticket"], "route_options": {"status": ["in", ["Open", "In Progress"]]}}

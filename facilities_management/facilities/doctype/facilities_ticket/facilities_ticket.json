@@ -1,0 +1,344 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "TKT-.YYYY.-.#####",
+ "creation": "2026-11-23 00:00:00.000000",
+ "doctype": "DocType",
+ "email_append_to": 1,
+ "sender_field": "raised_by",
+ "subject_field": "subject",
+ "engine": "InnoDB",
+ "field_order": [
+  "subject",
+  "category",
+  "status",
+  "priority",
+  "column_break_1",
+  "requested_by",
+  "raised_by",
+  "department",
+  "client_type",
+  "external_client_name",
+  "section_break_1",
+  "facility_asset",
+  "room",
+  "location_detail",
+  "column_break_2",
+  "source",
+  "section_break_2",
+  "description",
+  "attachment",
+  "section_break_3",
+  "assigned_to",
+  "linked_work_order",
+  "column_break_3",
+  "response_due",
+  "resolution_due",
+  "section_break_4",
+  "first_responded_on",
+  "resolved_on",
+  "closed_on",
+  "column_break_4",
+  "resolution_notes",
+  "rating",
+  "response_breach_notified",
+  "resolution_breach_notified"
+ ],
+ "fields": [
+  {
+   "fieldname": "subject",
+   "fieldtype": "Data",
+   "label": "Subject",
+   "reqd": 1,
+   "in_list_view": 1,
+   "bold": 1
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Facilities Ticket Category",
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Open\nIn Progress\nWaiting on Requester\nResolved\nClosed",
+   "default": "Open",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "\nLow\nMedium\nHigh\nCritical",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "description": "Defaults from the category, otherwise Medium."
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User",
+   "default": "user"
+  },
+  {
+   "fieldname": "raised_by",
+   "fieldtype": "Data",
+   "label": "Raised By (Email / Phone)",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "client_type",
+   "fieldtype": "Select",
+   "label": "Client Type",
+   "options": "Internal\nExternal",
+   "default": "Internal"
+  },
+  {
+   "fieldname": "external_client_name",
+   "fieldtype": "Data",
+   "label": "External Client Name",
+   "depends_on": "eval:doc.client_type=='External'"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Where"
+  },
+  {
+   "fieldname": "facility_asset",
+   "fieldtype": "Link",
+   "label": "Asset",
+   "options": "Facility Asset"
+  },
+  {
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "label": "Room",
+   "options": "Facility Room"
+  },
+  {
+   "fieldname": "location_detail",
+   "fieldtype": "Data",
+   "label": "Location Detail"
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source",
+   "fieldtype": "Select",
+   "label": "Source",
+   "options": "Web Portal\nEmail\nWhatsApp\nPhone\nMobile App\nWalk-in",
+   "default": "Web Portal",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Request"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment"
+  },
+  {
+   "fieldname": "section_break_3",
+   "fieldtype": "Section Break",
+   "label": "Assignment & SLA"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User",
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "linked_work_order",
+   "fieldtype": "Link",
+   "label": "Work Order",
+   "options": "Facilities Work Order",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "response_due",
+   "fieldtype": "Datetime",
+   "label": "First Response Due",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "resolution_due",
+   "fieldtype": "Datetime",
+   "label": "Resolution Due",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "section_break_4",
+   "fieldtype": "Section Break",
+   "label": "Progress"
+  },
+  {
+   "fieldname": "first_responded_on",
+   "fieldtype": "Datetime",
+   "label": "First Responded On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "resolved_on",
+   "fieldtype": "Datetime",
+   "label": "Resolved On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "closed_on",
+   "fieldtype": "Datetime",
+   "label": "Closed On",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "resolution_notes",
+   "fieldtype": "Text",
+   "label": "Resolution Notes"
+  },
+  {
+   "fieldname": "rating",
+   "fieldtype": "Rating",
+   "label": "Requester Rating"
+  },
+  {
+   "fieldname": "response_breach_notified",
+   "fieldtype": "Check",
+   "label": "Response Breach Notified",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "resolution_breach_notified",
+   "fieldtype": "Check",
+   "label": "Resolution Breach Notified",
+   "hidden": 1,
+   "read_only": 1,
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Facilities Work Order",
+   "link_fieldname": "linked_ticket"
+  }
+ ],
+ "modified": "2026-11-23 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Facilities",
+ "name": "Facilities Ticket",
+ "owner": "Administrator",
+ "title_field": "subject",
+ "search_fields": "subject,raised_by,category",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Technician",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Approver",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 0
+  },
+  {
+   "role": "Facilities Client",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 0,
+   "export": 0,
+   "print": 1,
+   "email": 1,
+   "share": 0,
+   "if_owner": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

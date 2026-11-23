@@ -39,6 +39,7 @@
   "section_break_5",
   "rating",
   "linked_purchase_order",
+  "linked_ticket",
   "sla_breach_notified"
  ],
  "fields": [
@@ -257,6 +258,14 @@
    "no_copy": 1,
    "read_only": 1,
    "print_hide": 1
+  },
+  {
+   "fieldname": "linked_ticket",
+   "fieldtype": "Link",
+   "label": "Ticket",
+   "options": "Facilities Ticket",
+   "read_only": 1,
+   "no_copy": 1
   }
  ],
  "index_web_pages_for_search": 1,

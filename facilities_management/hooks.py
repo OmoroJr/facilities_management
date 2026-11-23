@@ -50,10 +50,12 @@ scheduler_events = {
 		"facilities_management.utils.scheduler.check_contract_renewals",
 		"facilities_management.utils.scheduler.check_certification_expiries",
 		"facilities_management.utils.scheduler.auto_close_completed_work_orders",
+		"facilities_management.utils.ticketing.auto_close_resolved_tickets",
 	],
 	"hourly": [
 		"facilities_management.utils.scheduler.escalate_unassigned_work_orders",
 		"facilities_management.utils.scheduler.notify_sla_breaches",
+		"facilities_management.utils.ticketing.check_ticket_sla",
 	],
 }
 
@@ -64,6 +66,12 @@ standard_portal_menu_items = [
 		"title": "Facilities Requests",
 		"route": "/facilities-work-order-request",
 		"reference_doctype": "Facilities Work Order",
+		"role": "Facilities Client",
+	},
+	{
+		"title": "Support Tickets",
+		"route": "/app/facilities-ticket",
+		"reference_doctype": "Facilities Ticket",
 		"role": "Facilities Client",
 	},
 	{
@@ -86,6 +94,8 @@ standard_portal_menu_items = [
 
 # Document Events
 # ------------------
+# Ticketing (Facilities Ticket): utils/ticketing.py handles inbound/outbound ticket email,
+# keeps a ticket in step with its linked work order, and runs the SLA/auto-close jobs.
 # Status-change mail (Pending Approval / Assigned / Completed ...) is sent from
 # the Facilities Work Order controller via utils/notifications.py. The hooks
 # below add the cross-document email behaviour:
@@ -98,11 +108,15 @@ doc_events = {
 		"after_insert": [
 			"facilities_management.utils.email_intake.on_communication_insert",
 			"facilities_management.utils.email_hooks.notify_on_ticket_reply",
+			"facilities_management.utils.ticketing.on_communication_insert",
 		],
 	},
 	"Facilities Work Order": {
 		"after_insert": "facilities_management.utils.email_hooks.on_work_order_created",
-		"on_update": "facilities_management.utils.email_hooks.on_work_order_assignment_change",
+		"on_update": [
+			"facilities_management.utils.email_hooks.on_work_order_assignment_change",
+			"facilities_management.utils.ticketing.sync_ticket_from_work_order",
+		],
 	},
 	"Room Booking": {
 		"on_update": "facilities_management.utils.booking_invites.send_booking_email",
@@ -119,7 +133,7 @@ doc_events = {
 calendars = ["Room Booking", "Vehicle Booking"]
 
 # Re-assert dashboard cards/charts/workspace blocks after every migrate
-after_migrate = ["facilities_management.utils.setup.ensure_dashboard_assets"]
+after_migrate = ["facilities_management.utils.setup.after_migrate"]
 
 # Website
 # ------------------

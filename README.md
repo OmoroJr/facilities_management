@@ -135,3 +135,26 @@ Every report now has a filter screen; the nine new ones have a KPI summary strip
 | Maintenance Mix | Preventive vs corrective vs inspection work, planned-work % |
 
 Dashboard additions: 5 number cards (Overdue Work Orders, SLA Compliance 30 Days, Avg Resolution Hours 30 Days, Warranties Expiring 90 Days, Contracts Expiring 60 Days; backed by `facilities_management.api.dashboard`) and 7 report-driven charts. Ratings are shown on a 1-5 scale. Reports are visible to Facilities Manager, Facilities Approver and System Manager.
+
+
+## Ticketing (v0.0.7)
+
+`Facilities Ticket` (TKT-YYYY-#####) is the front door for anything someone reports - a leak, a lock,
+a question - while `Facilities Work Order` stays the approved job on the ground. Most tickets are fixed
+by replying; when a technician has to go and do something, **Create > Work Order** raises one from
+the ticket and the two stay linked (completing/closing the work order resolves/closes the ticket).
+
+* Statuses: Open > In Progress > Waiting on Requester > Resolved > Closed (resolve needs notes;
+  Resolved tickets auto-close after *Auto-close Resolved Tickets After (days)* in Facilities Settings).
+* **Facilities Ticket Category** sets a default assignee/priority and optional first-response and
+  resolution targets per category (starter categories are added on migrate). Without an override,
+  targets come from the priority: first response 1/4/8/24 h, resolution 4/24/72/168 h
+  (Critical/High/Medium/Low). Hourly job alerts once on a missed response and once on a missed resolution;
+  the clock is paused while a ticket is Waiting on Requester.
+* Email: point the Email Account's **Append To** at *Facilities Ticket* (and keep *Enable Email Request
+  Intake* ticked in Facilities Settings). The first email creates the ticket and is acknowledged with the
+  ticket ID + tracking link; replies thread onto it, move Waiting > In Progress and reopen Resolved/Closed
+  tickets (*Reopen on reply* setting).
+* `/track-ticket` accepts both TKT- and WO- IDs.
+* Requesters (role Facilities Client) can log and view their own tickets under /app/facilities-ticket
+  but cannot change status, priority, category or assignment.

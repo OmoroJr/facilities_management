@@ -1,0 +1,91 @@
+{
+ "doctype": "DocType",
+ "name": "Facilities Queue",
+ "module": "Facilities",
+ "owner": "Administrator",
+ "creation": "2026-10-13 12:00:00.000000",
+ "modified": "2026-10-13 12:00:00.000000",
+ "modified_by": "Administrator",
+ "engine": "InnoDB",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "field_order": [
+  "queue_name",
+  "queue_manager",
+  "is_active",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "queue_name",
+   "fieldtype": "Data",
+   "label": "Queue Name",
+   "reqd": 1,
+   "unique": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "queue_manager",
+   "fieldtype": "Link",
+   "label": "Queue Manager",
+   "options": "User",
+   "description": "Notified when a work order lands in this queue."
+  },
+  {
+   "fieldname": "is_active",
+   "fieldtype": "Check",
+   "label": "Is Active",
+   "default": "1",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  }
+ ],
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Staff",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  }
+ ],
+ "istable": 0,
+ "issingle": 0,
+ "editable_grid": 0,
+ "track_changes": 1,
+ "autoname": "field:queue_name",
+ "naming_rule": "By fieldname"
+}

@@ -86,3 +86,15 @@ def _sync_workspace():
 		ws.flags.ignore_permissions = True
 		ws.flags.ignore_links = True
 		ws.save()
+
+
+def after_migrate():
+	"""hooks.py after_migrate entry point: dashboard assets + starter ticket categories."""
+	ensure_dashboard_assets()
+	try:
+		from facilities_management.utils.ticketing import ensure_ticket_categories
+
+		ensure_ticket_categories()
+		frappe.db.commit()
+	except Exception:
+		frappe.log_error(title="Facilities: could not add starter ticket categories")
