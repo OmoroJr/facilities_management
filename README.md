@@ -158,3 +158,76 @@ the ticket and the two stay linked (completing/closing the work order resolves/c
 * `/track-ticket` accepts both TKT- and WO- IDs.
 * Requesters (role Facilities Client) can log and view their own tickets under /app/facilities-ticket
   but cannot change status, priority, category or assignment.
+
+
+## ABS Work Order Procedure Manual alignment (v0.0.8)
+
+The system now follows the ABS Work Order Procedure Manual (draft Rv 17-12-2025) end to end.
+
+| Manual step | Where it lives |
+|---|---|
+| 1 Identify and report | Facilities Ticket (portal, email, phone, walk-in) |
+| 2 Vetting and segmentation | Priority and SLA; **Cost Category** and **Policy Item** on the work order (Facilities Cost Policy Item holds the ABS Cost Management Policy) |
+| 3 Department approval | Approval workflow; for Department-Specific and Shared costs approval needs a charge account / cost center, how approval was given (Email, Signed Form or System Approval, never WhatsApp), the evidence, and cost sharing agreed |
+| 4 Submission and 24-hour acknowledgement | *Acknowledged On* is stamped when Facilities first acts; **Acknowledge Receipt** button; hourly alert to Facilities Managers if a Submitted work order is not acknowledged within *Acknowledge Work Orders Within (hours)* |
+| 5 Quotation | Quotation attachment, materials / labour / transport / other, total and duration on the work order; purchase orders require an approved quotation |
+| 6 Scheduling | Proposed dates, assignment, preventive maintenance; optional **signed contract required** before work starts |
+| 7 Execution | Start, hold, complete with timestamps; technician / contractor details |
+| 8 Review and feedback | Written client confirmation (who, when, how, attachment), client feedback, provider feedback and rating |
+| 9 Close | Needs the client confirmation and a Facilities inspection (switch off with *Require Written Completion Confirmation*). Final payment approval needs the inspection and the confirmation or a warranty. Auto-close only closes confirmed, inspected work orders |
+| Emergencies | Emergency category or Critical priority skips the pre-approval documentation; Facilities Manager has an **Emergency Approve** action |
+
+Purchase orders add justification, delivery, VAT, payment option details, Facilities review, **Finance Approve**
+(Accounts Manager), supplier acknowledgement, goods receipt confirmation and delivery note/invoice attachments.
+Maintenance contracts add scope, cost split, deposit, warranty, signatures and a signed copy.
+
+Print formats: **ABS Maintenance Work Order Form**, **ABS Purchase Order**, **ABS Maintenance Contract**.
+Report: **Work Order Cost Allocation** (who is paying, by cost category, department, charge account or status).
+Staff-only fields on the work order sit at permission level 1; requesters can still fill the form, contact details and
+the completion confirmation.
+
+
+## NTSA vehicle inspection (v0.0.9)
+
+Tracks the NTSA inspection of every Facility Vehicle, books appointments and reminds people before it lapses.
+
+* **Facility Vehicle** has an *NTSA Compliance* section: inspection required, last inspection, due / certificate
+  expiry, certificate number and a computed **NTSA Status** (Valid, Due Soon, Overdue, Not Required, Unknown).
+  Enter the due date once; after that it is updated by the bookings.
+* **Facilities NTSA Booking** (NTSA-YYYY-#####): Planned > Booked > Passed / Failed / Cancelled. Booking needs an
+  appointment date; recording a pass needs the inspection date, certificate number and expiry and then resets the
+  vehicle's due date; recording a failure needs the defects and offers **Create > Repair Work Order** (cost category
+  Vehicle) and **Create > Re-inspection Booking**.
+* **Reminders** (daily job, email to Facilities Managers, the vehicle's driver and whoever booked): before due on the
+  days in *Remind Before Due* (default 30, 14, 7, 3, 1), on the due day, the day after it lapses and then every
+  7 days; before an appointment (default 3, 1 and 0 days); and after an appointment that has no result recorded
+  (1, 3 and 7 days). A vehicle already booked in time is not nagged about the due date.
+* **Planned bookings are created automatically** 30 days before the due date (switch off in Facilities Settings).
+* **Vehicle Booking** warns when the vehicle's inspection has expired before the trip; tick *Block Vehicle Bookings
+  When NTSA Inspection Has Expired* to stop the booking instead.
+* Dashboard: *NTSA Due Soon*, *NTSA Overdue*, *NTSA Inspections Booked* and *Vehicles by NTSA Status*; report
+  **Vehicle NTSA Compliance**; Facilities workspace shortcuts.
+
+The system does not connect to NTSA or eCitizen. The appointment is booked on the NTSA / eCitizen site and
+recorded here with its reference.
+
+
+## Insurance and speed governor tracking (v0.0.10)
+
+Every Facility Vehicle now keeps three things valid, each with its own status: **NTSA inspection**, **Insurance**
+and **Speed Governor**.
+
+* Vehicle fields: *Insurance Required* (on by default), insurer, policy number, cover expiry; *Speed Governor Required*
+  (off by default, tick it for vehicles that need one), certificate number, speed limit and certificate expiry.
+  Enter the expiry dates once; the first time a vehicle is saved its statuses are calculated.
+* **Facilities Vehicle Compliance Record** (VCR-YYYY-#####) records each insurance renewal or speed governor
+  certification with provider, policy / certificate number, cover type, dates, premium or fee, payment reference and
+  the document. Saving a record makes it the vehicle's current cover or certificate when it runs later than the one on
+  file, and recalculates the status. An older record is kept as history and does not change the vehicle.
+* Reminders use the same days and repeat setting as the NTSA inspection (Facilities Settings > Vehicle Compliance):
+  before expiry, on the day, the day after it lapses and then every 7 days. Emails go to Facilities Managers and the
+  vehicle's driver. There is no booking step for insurance or the speed governor.
+* **Vehicle Booking** warns, or blocks if *Block Vehicle Bookings When Insurance, NTSA Inspection or Speed Governor Has
+  Expired* is ticked, when any of the three has expired before the trip.
+* Dashboard: *Vehicles With Expired Compliance*. Report: **Vehicle Compliance Register** (one row per vehicle per item,
+  filterable by item, status and vehicle type). Facilities workspace shortcuts for Compliance Records and the register.

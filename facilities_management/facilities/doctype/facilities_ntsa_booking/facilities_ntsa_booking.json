@@ -1,0 +1,281 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "NTSA-.YYYY.-.#####",
+ "creation": "2026-11-24 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "vehicle",
+  "registration_number",
+  "service_type",
+  "status",
+  "cb_1",
+  "due_date",
+  "preferred_date",
+  "booked_by",
+  "driver",
+  "sb_appt",
+  "appointment_date",
+  "appointment_time",
+  "inspection_centre",
+  "cb_2",
+  "booking_reference",
+  "fee_amount",
+  "payment_reference",
+  "booking_confirmation",
+  "sb_result",
+  "result_date",
+  "certificate_number",
+  "certificate_expiry",
+  "certificate_attachment",
+  "cb_3",
+  "failure_reasons",
+  "previous_booking",
+  "repair_work_order",
+  "sb_notes",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "Facility Vehicle",
+   "reqd": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "registration_number",
+   "fieldtype": "Data",
+   "label": "Registration No.",
+   "fetch_from": "vehicle.registration_number",
+   "read_only": 1,
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "service_type",
+   "fieldtype": "Select",
+   "label": "Service",
+   "options": "Motor Vehicle Inspection\nRe-inspection\nVehicle Registration / Transfer\nOther NTSA Service",
+   "default": "Motor Vehicle Inspection",
+   "reqd": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Planned\nBooked\nPassed\nFailed\nCancelled",
+   "default": "Planned",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "cb_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "label": "Inspection Due",
+   "read_only": 1,
+   "description": "From the vehicle record."
+  },
+  {
+   "fieldname": "preferred_date",
+   "fieldtype": "Date",
+   "label": "Preferred Date"
+  },
+  {
+   "fieldname": "booked_by",
+   "fieldtype": "Link",
+   "label": "Booked By",
+   "options": "User",
+   "default": "user"
+  },
+  {
+   "fieldname": "driver",
+   "fieldtype": "Link",
+   "label": "Driver",
+   "options": "Employee",
+   "fetch_from": "vehicle.driver"
+  },
+  {
+   "fieldname": "sb_appt",
+   "fieldtype": "Section Break",
+   "label": "Appointment"
+  },
+  {
+   "fieldname": "appointment_date",
+   "fieldtype": "Date",
+   "label": "Appointment Date",
+   "in_list_view": 1
+  },
+  {
+   "fieldname": "appointment_time",
+   "fieldtype": "Time",
+   "label": "Appointment Time"
+  },
+  {
+   "fieldname": "inspection_centre",
+   "fieldtype": "Data",
+   "label": "Inspection Centre"
+  },
+  {
+   "fieldname": "cb_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "booking_reference",
+   "fieldtype": "Data",
+   "label": "NTSA / eCitizen Booking Reference"
+  },
+  {
+   "fieldname": "fee_amount",
+   "fieldtype": "Currency",
+   "label": "Fee Paid"
+  },
+  {
+   "fieldname": "payment_reference",
+   "fieldtype": "Data",
+   "label": "Payment Reference (M-Pesa / eCitizen)"
+  },
+  {
+   "fieldname": "booking_confirmation",
+   "fieldtype": "Attach",
+   "label": "Booking Confirmation"
+  },
+  {
+   "fieldname": "sb_result",
+   "fieldtype": "Section Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "result_date",
+   "fieldtype": "Date",
+   "label": "Inspection Date"
+  },
+  {
+   "fieldname": "certificate_number",
+   "fieldtype": "Data",
+   "label": "Certificate Number"
+  },
+  {
+   "fieldname": "certificate_expiry",
+   "fieldtype": "Date",
+   "label": "Certificate Expiry",
+   "description": "Becomes the vehicle's next inspection due date."
+  },
+  {
+   "fieldname": "certificate_attachment",
+   "fieldtype": "Attach",
+   "label": "Inspection Certificate"
+  },
+  {
+   "fieldname": "cb_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "failure_reasons",
+   "fieldtype": "Small Text",
+   "label": "Reasons for Failure / Defects Found"
+  },
+  {
+   "fieldname": "previous_booking",
+   "fieldtype": "Link",
+   "label": "Re-inspection Of",
+   "options": "Facilities NTSA Booking",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "repair_work_order",
+   "fieldtype": "Link",
+   "label": "Repair Work Order",
+   "options": "Facilities Work Order",
+   "read_only": 1,
+   "no_copy": 1
+  },
+  {
+   "fieldname": "sb_notes",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Facilities NTSA Booking",
+   "link_fieldname": "previous_booking"
+  }
+ ],
+ "modified": "2026-11-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Facilities",
+ "name": "Facilities NTSA Booking",
+ "owner": "Administrator",
+ "title_field": "registration_number",
+ "search_fields": "registration_number,booking_reference,inspection_centre",
+ "permissions": [
+  {
+   "role": "System Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Manager",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 1,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Technician",
+   "read": 1,
+   "write": 1,
+   "create": 1,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 1,
+   "share": 1
+  },
+  {
+   "role": "Facilities Approver",
+   "read": 1,
+   "write": 0,
+   "create": 0,
+   "delete": 0,
+   "report": 1,
+   "export": 1,
+   "print": 1,
+   "email": 0,
+   "share": 0
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

@@ -10,6 +10,8 @@
   "default_priority",
   "auto_close_after_days",
   "ticket_auto_close_days",
+  "acknowledgement_hours",
+  "require_completion_confirmation",
   "column_break_sla",
   "default_approver",
   "escalation_hours",
@@ -40,7 +42,16 @@
   "whatsapp_phone_number_id",
   "whatsapp_verify_token",
   "whatsapp_access_token",
-  "whatsapp_api_version"
+  "whatsapp_api_version",
+  "ntsa_sb",
+  "ntsa_reminders_enabled",
+  "ntsa_reminder_days",
+  "ntsa_overdue_reminder_every_days",
+  "ntsa_auto_create_booking",
+  "ntsa_auto_booking_lead_days",
+  "ntsa_cb",
+  "ntsa_booking_reminder_days",
+  "block_expired_ntsa_bookings"
  ],
  "fields": [
   {
@@ -260,11 +271,78 @@
    "fieldtype": "Int",
    "label": "Auto-close Resolved Tickets After (days)",
    "default": "3"
+  },
+  {
+   "fieldname": "acknowledgement_hours",
+   "fieldtype": "Int",
+   "label": "Acknowledge Work Orders Within (hours)",
+   "default": "24",
+   "description": "ABS procedure, step 4: Facilities must acknowledge receipt within 24 hours."
+  },
+  {
+   "fieldname": "require_completion_confirmation",
+   "fieldtype": "Check",
+   "label": "Require Written Completion Confirmation Before Closing",
+   "default": "1",
+   "description": "Step 8-9: written client confirmation and a Facilities inspection are needed to close a work order and to approve final payment."
+  },
+  {
+   "fieldname": "ntsa_sb",
+   "fieldtype": "Section Break",
+   "label": "Vehicle Compliance (NTSA, Insurance, Speed Governor)"
+  },
+  {
+   "fieldname": "ntsa_reminders_enabled",
+   "fieldtype": "Check",
+   "label": "Send Vehicle Compliance Reminders",
+   "default": "1"
+  },
+  {
+   "fieldname": "ntsa_reminder_days",
+   "fieldtype": "Data",
+   "label": "Remind Before Expiry (days)",
+   "default": "30,14,7,3,1",
+   "description": "Comma separated. Applies to NTSA inspection, insurance and speed governor. A reminder goes out on each of these days before expiry."
+  },
+  {
+   "fieldname": "ntsa_overdue_reminder_every_days",
+   "fieldtype": "Int",
+   "label": "Repeat Overdue Reminder Every (days)",
+   "default": "7"
+  },
+  {
+   "fieldname": "ntsa_auto_create_booking",
+   "fieldtype": "Check",
+   "label": "Create a Planned Booking Automatically",
+   "default": "1"
+  },
+  {
+   "fieldname": "ntsa_auto_booking_lead_days",
+   "fieldtype": "Int",
+   "label": "Create It This Many Days Before Due",
+   "default": "30"
+  },
+  {
+   "fieldname": "ntsa_cb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ntsa_booking_reminder_days",
+   "fieldtype": "Data",
+   "label": "Remind Before Appointment (days)",
+   "default": "3,1,0"
+  },
+  {
+   "fieldname": "block_expired_ntsa_bookings",
+   "fieldtype": "Check",
+   "label": "Block Vehicle Bookings When Insurance, NTSA Inspection or Speed Governor Has Expired",
+   "default": "0",
+   "description": "Off: staff see a warning only. On: the booking cannot be saved."
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-22 00:00:00.000000",
+ "modified": "2026-11-24 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Facilities",
  "name": "Facilities Settings",

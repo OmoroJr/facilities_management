@@ -51,7 +51,7 @@ def _upsert(data):
 
 
 def ensure_dashboard_assets():
-	for folder in ("number_card", "dashboard_chart", "dashboard"):
+	for folder in ("number_card", "dashboard_chart", "dashboard", "print_format"):
 		for data in _records(folder):
 			try:
 				_upsert(data)
@@ -98,3 +98,10 @@ def after_migrate():
 		frappe.db.commit()
 	except Exception:
 		frappe.log_error(title="Facilities: could not add starter ticket categories")
+	try:
+		from facilities_management.utils.procedure import ensure_cost_policy_items
+
+		ensure_cost_policy_items()
+		frappe.db.commit()
+	except Exception:
+		frappe.log_error(title="Facilities: could not add cost policy items")

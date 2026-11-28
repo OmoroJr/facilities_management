@@ -14,7 +14,28 @@
   "fuel_type",
   "facility_asset",
   "section_break_1",
-  "image"
+  "image",
+  "sb_ntsa",
+  "ntsa_inspection_required",
+  "last_ntsa_inspection",
+  "ntsa_inspection_due",
+  "cb_ntsa",
+  "ntsa_certificate_number",
+  "ntsa_status",
+  "sb_insurance",
+  "insurance_required",
+  "insurance_provider",
+  "insurance_policy_number",
+  "cb_ins",
+  "insurance_expiry",
+  "insurance_status",
+  "sb_governor",
+  "speed_governor_required",
+  "governor_certificate_number",
+  "governor_speed_limit",
+  "cb_gov",
+  "governor_expiry",
+  "governor_status"
  ],
  "fields": [
   {
@@ -81,11 +102,139 @@
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
+  },
+  {
+   "fieldname": "sb_ntsa",
+   "fieldtype": "Section Break",
+   "label": "NTSA Compliance"
+  },
+  {
+   "fieldname": "ntsa_inspection_required",
+   "fieldtype": "Check",
+   "label": "NTSA Inspection Required",
+   "default": "1",
+   "description": "Untick for a vehicle that does not need NTSA inspection. It is then left out of reminders."
+  },
+  {
+   "fieldname": "last_ntsa_inspection",
+   "fieldtype": "Date",
+   "label": "Last NTSA Inspection"
+  },
+  {
+   "fieldname": "ntsa_inspection_due",
+   "fieldtype": "Date",
+   "label": "Inspection Due / Certificate Expiry",
+   "description": "Updated automatically when an NTSA booking is recorded as Passed. Enter it by hand for the first time."
+  },
+  {
+   "fieldname": "cb_ntsa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ntsa_certificate_number",
+   "fieldtype": "Data",
+   "label": "Inspection Certificate No."
+  },
+  {
+   "fieldname": "ntsa_status",
+   "fieldtype": "Select",
+   "label": "NTSA Status",
+   "options": "\nValid\nDue Soon\nOverdue\nNot Required\nUnknown",
+   "read_only": 1,
+   "in_standard_filter": 1,
+   "description": "Refreshed on save and every night."
+  },
+  {
+   "fieldname": "sb_insurance",
+   "fieldtype": "Section Break",
+   "label": "Insurance"
+  },
+  {
+   "fieldname": "insurance_required",
+   "fieldtype": "Check",
+   "label": "Insurance Required",
+   "default": "1"
+  },
+  {
+   "fieldname": "insurance_provider",
+   "fieldtype": "Data",
+   "label": "Insurer"
+  },
+  {
+   "fieldname": "insurance_policy_number",
+   "fieldtype": "Data",
+   "label": "Policy Number"
+  },
+  {
+   "fieldname": "cb_ins",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "insurance_expiry",
+   "fieldtype": "Date",
+   "label": "Cover Expires",
+   "description": "Updated automatically from the latest Vehicle Compliance Record. Enter it by hand the first time."
+  },
+  {
+   "fieldname": "insurance_status",
+   "fieldtype": "Select",
+   "label": "Insurance Status",
+   "options": "\nValid\nDue Soon\nOverdue\nNot Required\nUnknown",
+   "read_only": 1,
+   "in_standard_filter": 1
+  },
+  {
+   "fieldname": "sb_governor",
+   "fieldtype": "Section Break",
+   "label": "Speed Governor"
+  },
+  {
+   "fieldname": "speed_governor_required",
+   "fieldtype": "Check",
+   "label": "Speed Governor Required",
+   "description": "Tick for vehicles that must carry a certified speed governor."
+  },
+  {
+   "fieldname": "governor_certificate_number",
+   "fieldtype": "Data",
+   "label": "Certificate Number"
+  },
+  {
+   "fieldname": "governor_speed_limit",
+   "fieldtype": "Int",
+   "label": "Speed Limit (km/h)"
+  },
+  {
+   "fieldname": "cb_gov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "governor_expiry",
+   "fieldtype": "Date",
+   "label": "Certificate Expires",
+   "description": "Updated automatically from the latest Vehicle Compliance Record. Enter it by hand the first time."
+  },
+  {
+   "fieldname": "governor_status",
+   "fieldtype": "Select",
+   "label": "Speed Governor Status",
+   "options": "\nValid\nDue Soon\nOverdue\nNot Required\nUnknown",
+   "read_only": 1,
+   "in_standard_filter": 1
   }
  ],
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-09-22 00:00:00.000000",
+ "links": [
+  {
+   "link_doctype": "Facilities NTSA Booking",
+   "link_fieldname": "vehicle"
+  },
+  {
+   "link_doctype": "Facilities Vehicle Compliance Record",
+   "link_fieldname": "vehicle"
+  }
+ ],
+ "modified": "2026-11-24 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Facilities",
  "name": "Facility Vehicle",
@@ -126,6 +275,22 @@
    "print": 1,
    "email": 1,
    "share": 1
+  },
+  {
+   "role": "Facilities Technician",
+   "permlevel": 0,
+   "read": 1,
+   "report": 1,
+   "print": 1,
+   "export": 1
+  },
+  {
+   "role": "Facilities Approver",
+   "permlevel": 0,
+   "read": 1,
+   "report": 1,
+   "print": 1,
+   "export": 1
   }
  ],
  "sort_field": "modified",

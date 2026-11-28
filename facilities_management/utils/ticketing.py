@@ -315,7 +315,7 @@ def auto_close_resolved_tickets():
 # --------------------------------------------------------------------- setup
 
 DEFAULT_CATEGORIES = (
-	"Electrical", "Plumbing & Water", "HVAC / Air Conditioning", "Cleaning & Housekeeping",
+	"Electrical", "Plumbing & Water", "Carpentry", "Masonry", "Painting", "HVAC / Air Conditioning", "Cleaning & Housekeeping",
 	"Security & Access", "Furniture & Fittings", "IT & Network", "Grounds & Landscaping",
 	"Vehicles & Transport", "Room / Space Request", "General Enquiry",
 )

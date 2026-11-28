@@ -51,11 +51,13 @@ scheduler_events = {
 		"facilities_management.utils.scheduler.check_certification_expiries",
 		"facilities_management.utils.scheduler.auto_close_completed_work_orders",
 		"facilities_management.utils.ticketing.auto_close_resolved_tickets",
+		"facilities_management.utils.ntsa.daily_ntsa_checks",
 	],
 	"hourly": [
 		"facilities_management.utils.scheduler.escalate_unassigned_work_orders",
 		"facilities_management.utils.scheduler.notify_sla_breaches",
 		"facilities_management.utils.ticketing.check_ticket_sla",
+		"facilities_management.utils.procedure.check_acknowledgement_overdue",
 	],
 }
 

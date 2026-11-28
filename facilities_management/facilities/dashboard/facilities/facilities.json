@@ -74,6 +74,26 @@
    "doctype": "Number Card Link",
    "parentfield": "cards",
    "card": "Overdue Tickets"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "NTSA Due Soon"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "NTSA Overdue"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "NTSA Inspections Booked"
+  },
+  {
+   "doctype": "Number Card Link",
+   "parentfield": "cards",
+   "card": "Vehicles With Expired Compliance"
   }
  ],
  "charts": [
@@ -201,6 +221,12 @@
    "doctype": "Dashboard Chart Link",
    "parentfield": "charts",
    "chart": "Tickets Created Monthly",
+   "width": "Half"
+  },
+  {
+   "doctype": "Dashboard Chart Link",
+   "parentfield": "charts",
+   "chart": "Vehicles by NTSA Status",
    "width": "Half"
   }
  ],

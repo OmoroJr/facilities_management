@@ -60,3 +60,36 @@ def overdue_tickets():
 		{"status": ["in", ["Open", "In Progress"]], "resolution_due": ["<", now_datetime()]},
 	)
 	return {"value": n, "fieldtype": "Int", "route": ["List", "Facilities Ticket"], "route_options": {"status": ["in", ["Open", "In Progress"]]}}
+
+
+@frappe.whitelist()
+def ntsa_due_soon():
+	from facilities_management.utils.ntsa import get_soon_days
+
+	frappe.has_permission("Facility Vehicle", "read", throw=True)
+	today = frappe.utils.nowdate()
+	n = frappe.db.count("Facility Vehicle", {
+		"ntsa_inspection_required": 1,
+		"ntsa_inspection_due": ["between", [today, frappe.utils.add_days(today, get_soon_days())]],
+	})
+	return {"value": n, "fieldtype": "Int", "route": ["List", "Facility Vehicle"], "route_options": {"ntsa_status": "Due Soon"}}
+
+
+@frappe.whitelist()
+def ntsa_overdue():
+	frappe.has_permission("Facility Vehicle", "read", throw=True)
+	n = frappe.db.count("Facility Vehicle", {"ntsa_inspection_required": 1, "ntsa_inspection_due": ["<", frappe.utils.nowdate()]})
+	return {"value": n, "fieldtype": "Int", "route": ["List", "Facility Vehicle"], "route_options": {"ntsa_status": "Overdue"}}
+
+
+@frappe.whitelist()
+def vehicle_compliance_expired():
+	"""Vehicles with an expired NTSA inspection, insurance or speed governor."""
+	from facilities_management.utils.ntsa import COMPLIANCE_ITEMS
+
+	frappe.has_permission("Facility Vehicle", "read", throw=True)
+	today = frappe.utils.nowdate()
+	names = set()
+	for _label, required, expiry, _status in COMPLIANCE_ITEMS:
+		names.update(frappe.get_all("Facility Vehicle", filters={required: 1, expiry: ["<", today]}, pluck="name"))
+	return {"value": len(names), "fieldtype": "Int", "route": ["query-report", "Vehicle Compliance Register"]}

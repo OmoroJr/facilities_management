@@ -1,0 +1,22 @@
+{
+ "doctype": "Dashboard Chart",
+ "chart_name": "Vehicles by NTSA Status",
+ "filters_json": "[]",
+ "chart_type": "Group By",
+ "group_by_type": "Count",
+ "group_by_based_on": "ntsa_status",
+ "number_of_groups": 6,
+ "type": "Donut",
+ "timeseries": 0,
+ "document_type": "Facility Vehicle",
+ "is_public": 1,
+ "is_standard": 1,
+ "module": "Facilities",
+ "docstatus": 0,
+ "creation": "2026-11-24 00:00:00.000000",
+ "modified": "2026-11-24 00:00:00.000000",
+ "modified_by": "Administrator",
+ "owner": "Administrator",
+ "idx": 0,
+ "name": "Vehicles by NTSA Status"
+}

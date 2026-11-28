@@ -67,11 +67,12 @@ def auto_close_completed_work_orders():
 	settings = frappe.get_cached_doc("Facilities Settings")
 	days = settings.auto_close_after_days or 7
 	cutoff = add_days(today(), -days)
-	stale = frappe.get_all(
-		"Facilities Work Order",
-		filters={"status": "Completed", "completed_on": ["<=", cutoff]},
-		pluck="name",
-	)
+	filters = {"status": "Completed", "completed_on": ["<=", cutoff]}
+	if settings.require_completion_confirmation:
+		# step 8-9: never close a job automatically without the client's written confirmation
+		filters["client_confirmed_on"] = ["is", "set"]
+		filters["inspection_date"] = ["is", "set"]
+	stale = frappe.get_all("Facilities Work Order", filters=filters, pluck="name")
 	for name in stale:
 		frappe.db.set_value("Facilities Work Order", name, "status", "Closed")
 		frappe.db.set_value("Facilities Work Order", name, "closed_on", now_datetime())

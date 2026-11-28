@@ -17,7 +17,28 @@
   "covered_assets",
   "section_break_2",
   "sla_terms",
-  "attachment"
+  "attachment",
+  "sb_abs",
+  "facilities_work_order",
+  "project_location",
+  "contract_date",
+  "duration_days",
+  "cb_abs",
+  "deposit_percent",
+  "deposit_amount",
+  "materials_cost",
+  "labour_cost",
+  "balance_payable",
+  "warranty_period",
+  "sb_scope",
+  "scope_of_work",
+  "sb_sign",
+  "contractor_signatory",
+  "contractor_witness",
+  "client_witness",
+  "cb_sign",
+  "signed_on",
+  "signed_copy"
  ],
  "fields": [
   {
@@ -98,11 +119,120 @@
    "fieldname": "attachment",
    "fieldtype": "Attach",
    "label": "Attachment"
+  },
+  {
+   "fieldname": "sb_abs",
+   "fieldtype": "Section Break",
+   "label": "Maintenance and Construction Contract"
+  },
+  {
+   "fieldname": "facilities_work_order",
+   "fieldtype": "Link",
+   "label": "Work Order",
+   "options": "Facilities Work Order",
+   "description": "The approved work order attached to this contract."
+  },
+  {
+   "fieldname": "project_location",
+   "fieldtype": "Data",
+   "label": "Project Location"
+  },
+  {
+   "fieldname": "contract_date",
+   "fieldtype": "Date",
+   "label": "Contract Date"
+  },
+  {
+   "fieldname": "duration_days",
+   "fieldtype": "Int",
+   "label": "Project Duration (working days)"
+  },
+  {
+   "fieldname": "cb_abs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "deposit_percent",
+   "fieldtype": "Percent",
+   "label": "Deposit %"
+  },
+  {
+   "fieldname": "deposit_amount",
+   "fieldtype": "Currency",
+   "label": "Deposit",
+   "read_only": 1
+  },
+  {
+   "fieldname": "materials_cost",
+   "fieldtype": "Currency",
+   "label": "Materials Cost"
+  },
+  {
+   "fieldname": "labour_cost",
+   "fieldtype": "Currency",
+   "label": "Labour Cost"
+  },
+  {
+   "fieldname": "balance_payable",
+   "fieldtype": "Currency",
+   "label": "Balance Payable After Completion",
+   "read_only": 1,
+   "description": "Contract value (VAT inclusive) less the deposit."
+  },
+  {
+   "fieldname": "warranty_period",
+   "fieldtype": "Data",
+   "label": "Warranty Period"
+  },
+  {
+   "fieldname": "sb_scope",
+   "fieldtype": "Section Break",
+   "label": "Scope of Work"
+  },
+  {
+   "fieldname": "scope_of_work",
+   "fieldtype": "Text Editor",
+   "label": "Scope of Work"
+  },
+  {
+   "fieldname": "sb_sign",
+   "fieldtype": "Section Break",
+   "label": "Signatures"
+  },
+  {
+   "fieldname": "contractor_signatory",
+   "fieldtype": "Data",
+   "label": "Contractor / Service Provider (signatory)"
+  },
+  {
+   "fieldname": "contractor_witness",
+   "fieldtype": "Data",
+   "label": "Contractor Witness"
+  },
+  {
+   "fieldname": "client_witness",
+   "fieldtype": "Data",
+   "label": "Client Witness"
+  },
+  {
+   "fieldname": "cb_sign",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "signed_on",
+   "fieldtype": "Date",
+   "label": "Date Signed",
+   "description": "A contract must have a signing date before work under it can start."
+  },
+  {
+   "fieldname": "signed_copy",
+   "fieldtype": "Attach",
+   "label": "Signed Copy"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-09-22 00:00:00.000000",
+ "modified": "2026-11-24 00:00:00.000000",
  "modified_by": "Administrator",
  "module": "Facilities",
  "name": "Facilities Maintenance Contract",

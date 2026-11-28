@@ -16,6 +16,12 @@ STAFF_ONLY_FIELDS = (
 	"resolution_notes", "response_due", "resolution_due",
 )
 
+# Ticket category -> the trade on the ABS work order form.
+TRADES = {
+	"Electrical": "Electrical", "Plumbing & Water": "Plumbing", "Carpentry": "Carpentry",
+	"Masonry": "Masonry", "Painting": "Painting",
+}
+
 # Hours, by priority. A category can override either value.
 RESPONSE_HOURS = {"Critical": 1, "High": 4, "Medium": 8, "Low": 24}
 RESOLUTION_HOURS = {"Critical": 4, "High": 24, "Medium": 72, "Low": 168}
@@ -128,8 +134,11 @@ def make_work_order(ticket):
 	if doc.status in DONE_STATUSES:
 		frappe.throw(_("Reopen the ticket before raising a work order."))
 
+	trade = TRADES.get(doc.category)
 	wo = frappe.get_doc({
 		"doctype": "Facilities Work Order",
+		"trade_category": trade or ("Other" if doc.category else None),
+		"trade_other": None if trade else doc.category,
 		"subject": doc.subject,
 		"work_order_type": "Corrective",
 		"status": "Submitted",
